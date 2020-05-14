@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>NAND PUF</title>
+	<title>Flash Memory Research</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	.collapsible {
@@ -30,17 +30,30 @@
 </head>
 
 <body>
-	<h1 align="center">Flash PUF Study</h1>
+	<h1 align="center">Flash Research Study</h1>
 	<hr>
 	<p align="center">Prawar Poudel</p>
 	<hr>
 
 	<button type="button" class="collapsible"> What this document is?</button>
 		<p>
-			This document is designed to be a comprehensive single-stop for all the flash memory based PUF design. For any newbie, please refer to the definition of PUF and the background on flash memory operation before pursuing this document. 
+			This document will present discussion, brief enough to be a quick read and detail enough to contain all necessary info, on many papers that deal in flash memories.
+		</p>
+		<p>
+			Please jump directly to the section of interest:
+			<ul>
+				<li>
+					<a href="#puflist">Flash PUF Papers Study</a>
+				</li>
+				<li>
+					<a href="#ssdlist">SSD Papers Study</a>
+				</li>
+			</ul>
 		</p>
 		<hr>
-
+	<hr>
+	<a name="puflist"><h2 align="center">Flash PUF Studies</h2></a>
+	<hr>
 	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
 		<p>
 			Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
@@ -422,6 +435,185 @@
 		<hr>
 		<hr>
 
+
+
+	<a name="puflist"><h2 align="center">SSD Studies</h2></a>
+	<hr>
+	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+		<p>
+			Following is the list of paper studied about the SSDs.
+			<ul>
+				<li>
+					<a href="#maneas1">A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</a>
+				</li>
+			</ul>
+		</p>
+		<hr>
+
+	<button type="button" class="collapsible"> <a name="maneas1">Paper: <i>A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</i></a></button>
+		<div class="content">
+			<p>
+				<li>
+					The original paper can be found at <a href="https://www.usenix.org/system/files/fast20-maneas.pdf">this link</a>. This paper was presented in USENIX FAST2020 and was awarded best paper.
+				</li>
+				<li>
+					Large scale study focused on enterprise storage systems, study conducted on 1.4 million SSDs of NetApp which is a major storage vendor.
+				</li>
+				<li>
+					Netapp storage system employ WAFL file systems and DATA ONTAP operating system which uses software RAID to provide resiliency against drive failures.
+				</li>
+				<li>
+					Data over the nw is serviced using file-based protocols as NFS and CIFS/SMB or block-based protocols such as iSCSI
+				</li>
+				<li>
+					Netapp systems in field send weekly NetApp Active IQ bundles that track a  very large set of system and device parameters. This study is based in mining this collection of NetApp Active IQ messages.
+				</li>
+				<li>
+					Different types of failures are categorized. The most severe of them that prompts replacement of drives was SCSI error. These error are due to ECC errors. Majority of other errors were recovered by RAID reconstruction.
+				</li>
+				<li>
+					Replacement rate: number of device failures divided by number of device years.
+				</li>
+				<li>
+					For the causes of errors or the factors impacting replacement rates:
+					<ul>
+						<li>
+							Usage and Age: A increasing failure rates of long period 12-15 months in the beginning, and 6-12 months of decreasing failure rates before finally stabilizing for 3D-TLC and eMLC (enterprise MLC) drives.
+						</li>
+						<li>
+							3D-TLC failure rates is higher than other types, thus the replacement reateis higher. Also 3d-TLC uses 10-15X times more for spare blocks
+						</li>
+						<li>
+							Higher capacity drives have higher replacement rates and more severe failures too (unresponsive drives).
+						</li>
+						<li>
+							High density drives have higher replacment rates.
+						</li>
+						<li>
+							EMphasize importance of firmware updates
+						</li>
+						<li>
+							Most of the systems make use of only 15% of rated life of device, thus there should be no concern to updatd to QLC.
+						</li>
+					</ul>
+				</li>
+			</p>
+		</div>
+
+		<hr>
+		<hr>
+
+	<a name="puflist"><h2 align="center">File Systems Study</h2></a>
+	<hr>
+	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+		<p>
+			Following is the list of paper studied about the SSDs.
+			<ul>
+				<li>
+					<a href="#matias1">From Open-Channel SSDs to Zoned Namespaces</a>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a href="#zoned1">NVMe Zoned Namespaces</a>
+				</li>
+			</ul>
+		</p>
+		<hr>
+
+	<button type="button" class="collapsible"> <a name="matias1">Presentation: <i>From Open-Channel SSDs to Zoned Namespace</i></a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						This is a presentation that can be found at <a href="https://www.usenix.org/sites/default/files/conference/protected-files/nsdi19_slides_bjorling.pdf">this link</a>. It was presented by Matais Bjorling, Director Solid-State System Software of Western Digital at USENIX 2019.
+					</li>
+					<li>
+						Presents forward-looking statements regarding Solid State techs, product development efforts, software development etc
+					</li>
+					<li>
+						Open Channel SSD architectures:
+						<ul>
+							<li>
+								No FTL present but leaves the management of device to OS. Linux 4.4 kernel supports Open Channel using NVM Express specification.
+							</li>
+							<li>
+								Chunks: Zoned namespace
+							</li>
+							<li>
+								Parallel Groups: Endurance management groups.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+
+	<button type="button" class="collapsible"> <a name="zoned1">Website: <i>NVMe Zoned Namespaces</i></a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<ul>
+						Let us First talk about zoned storage itself <a href="https://zonedstorage.io/introduction/zoned-storage/">(this link)</a>:
+						<li>
+							It is a class of storage devices that is divided into zones. Each zones have a write pointer that keeps track of position of next data to be written.
+						</li>
+						<li>
+							Data in a zone cannot be overwritten and must be erased first.
+						</li>
+						<li>
+							SSDs can also implement zoned interface to reduce write amplification, reduce the device DRAM needs and improve quaity of service at scale.
+						</li>
+						<li>
+							Support for zoned storage was added to Linux in version 4.10.0, and is based on Zoned Block Device abstraction. The interface associated with ZBD is an extension to traditional Linux block device interface.
+						</li>
+						<li>
+							Zoned storage is used in Shingled Magnetic Recording (SMR) which is different from Conventional Magnetic Recording (CMR) used in hard disk drives. SMR provides more areal density than CMR because SMR removes the gaps that are placed in CMR.
+						</li>
+						<li>
+							CMR places gaps in tracks of HDDs to account for Track MisRegistration (TMR) budget. This impacts the density negatively as the area is not fully utilized. SMR removes needs for gaps by writing tracks in overlapping manner, forming pattern similar to shingles on a roof.
+						</li>
+						<li>
+							While performing a write, the write head (which area bit wider than conventional ones) overlap part of another track thus leaving a narrower track band for reading.
+						</li>
+						<li>
+							The overlapping tracks are gouped into bands called zones of fized capacity for more effective data organization and partial update capacity.
+						</li>
+						<li>
+							Gaps are however present between zones to prevent overwrite between zones.
+						</li>
+						<li>
+							Because of the shingled organization, data has to be written sequentially. To overwrite, entire band or zone has to be re-written.
+						</li>
+					</ul>
+					<li>
+						The original content can be found at <a href="https://zonedstorage.io/introduction/zns/">this link</a>.
+					</li>
+					<li>
+						Zoned namespace divides the logical address space of a namespace into zones.
+					</li>
+					<li>
+						Each zones provides an LBA range that must be written sequentially and if written again must be explicitly reset.
+					</li>
+					<li>
+						It introduces a new type of NVMe drive that has several benefits over traditional NVMe SSDs.
+					</li>
+					<li>
+						ZNS is similar to HDDs Shingled Magnetic Recording zones that must be written sequentially and explicilty reset before rewritting.
+					</li>
+					<li>
+						The problem of log-on-log is solved naturally. Please read <a href="https://www.usenix.org/system/files/conference/inflow14/inflow14-yang.pdf">this paper</a> for log on log concept.
+					</li>
+					<li>
+						
+					</li>
+				</ul>
+			</p>
+		</div>
+
+		<hr>
+		<hr>
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
 		var i;
