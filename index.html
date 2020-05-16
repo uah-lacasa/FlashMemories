@@ -46,349 +46,359 @@
 					<a href="#puflist">Flash PUF Papers Study</a>
 				</li>
 				<li>
+					<a href="#sanit">Sanitization Study</a>
+				</li>
+				<li>
 					<a href="#ssdlist">SSD Papers Study</a>
+				</li>
+				<li>
+					<a href="#fsstudy">File System Study</a>
+				</li>
+				<li>
+					<a href="#otherstudy">Other Study</a>
 				</li>
 			</ul>
 		</p>
 		<hr>
 	<hr>
 	<a name="puflist"><h2 align="center">Flash PUF Studies</h2></a>
-	<hr>
-	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
-		<p>
-			Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
-			<ul>
-				<li>
-					<a href="#prabhu1">Paper: <i>Extracting Device Fingerprints from Flash Memory by Exploiting Physical Variations</i></a>
-				</li>
-				<li>
-					<a href="#wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a>
-				</li>
-				<li>
-					<a href="#xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a>
-				</li>
-				<li>
-					<a href="#jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a>
-				</li>
-				<li>
-					<a href="#sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a>
-				</li>
-				<li>
-					<a href="#mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a>
-				</li>
-				<li>
-					<a href="#clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a>
-				</li>
-				<li>
-					<a href="#sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a>
-				</li>
-			</ul>
-		</p>
+	<div>
 		<hr>
-
-	<button type="button" class="collapsible"> <a name="prabhu1">Paper: <i>Extracting Device fingerprints from Flash Memory by Exploiting Physical Variations</i></a></button>
-		<div class="content">
+		<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
 			<p>
-				This paper discusses seven techniques for generating fingerprints from flash memory. Published in 2011, the author P Prabhu was affiliated with UCSD while collaborators are from Cornell University. The original paper can be found at <a href="https://dl.acm.org/doi/10.5555/2022245.2022264">this link</a>. Their conclusion is the four of the seven techniques provide usable signatures.
-			</p>
-			<p>
-				The set up consists of Xilinx FPGA connected to the flash chip through a custom built flash controller. The measurements can be made with a resolution of 10ns.
-			</p>
-			<p>
+				Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
 				<ul>
 					<li>
-						<p>
-							<b>Program Disturb</b>: It is possible for two bits in separate pages to electrically influence each other. Program operation in a page might induce an mild programming force in an unselected word line. For generation of signature, repeated program operation is performed in a page. After each program operation, the state of adjacent page is read out to record the number of program operations required to cause the flip in each bit of adjacent page. This operation is performed for all the bits in the adjacent page. The number of program operations performed is limited to 10000. For the bits that are not affected, the value of 0 is recorded.
-						</p>
-						<p>
-							The signature is page based and thus thousands of signatures can be extracted from a single flash memory. The time it takes is between 1-5 minutes.
-						</p>
+						<a href="#prabhu1">Paper: <i>Extracting Device Fingerprints from Flash Memory by Exploiting Physical Variations</i></a>
 					</li>
 					<li>
-						<p>
-							<b>Read Disturb</b>: The idea behind read disturb is similar to Program Disturb. Since for read operation, a small current has to be suppled as read current, this current might influence adjacent flash page over a number of times.
-						</p>
-						<p>
-							The number of read operations in a flash page to influence adjacent flash page is limited to 10 million times while the state of adjacent flash page is read after every 1000 read iterations. Despite having good metrics for correlation (high for signature generated from a single page while almost 0 for those from different pages), it is too slow process. It almost took 6 hours to have useful signature for MLC chips.
-						</p>
+						<a href="#wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a>
 					</li>
 					<li>
-						<p>
-							<b>Program Operation Latency</b>:  This technique is based on per-bit variation in program latency.Program operation is performed one bit at a time and the latency is recorded such that a single bit contributes a single value to the fingerprint. There are two following variations of the technique as discussed below:
-						</p>
-						<p>
-							<ul>
-								<li>
-									<p>
-										<i>Single Page</i>: Following steps are followed for fingerprint generation:
-										<ul> 
-											<li>Erase the block.</li>
-											<li>Program each bit in a page within a block as follows:</li>
+						<a href="#xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a>
+					</li>
+					<li>
+						<a href="#jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a>
+					</li>
+					<li>
+						<a href="#sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a>
+					</li>
+					<li>
+						<a href="#mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a>
+					</li>
+					<li>
+						<a href="#clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a>
+					</li>
+					<li>
+						<a href="#sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="prabhu1">Paper: <i>Extracting Device fingerprints from Flash Memory by Exploiting Physical Variations</i></a></button>
+			<div class="content">
+				<p>
+					This paper discusses seven techniques for generating fingerprints from flash memory. Published in 2011, the author P Prabhu was affiliated with UCSD while collaborators are from Cornell University. The original paper can be found at <a href="https://dl.acm.org/doi/10.5555/2022245.2022264">this link</a>. Their conclusion is the four of the seven techniques provide usable signatures.
+				</p>
+				<p>
+					The set up consists of Xilinx FPGA connected to the flash chip through a custom built flash controller. The measurements can be made with a resolution of 10ns.
+				</p>
+				<p>
+					<ul>
+						<li>
+							<p>
+								<b>Program Disturb</b>: It is possible for two bits in separate pages to electrically influence each other. Program operation in a page might induce an mild programming force in an unselected word line. For generation of signature, repeated program operation is performed in a page. After each program operation, the state of adjacent page is read out to record the number of program operations required to cause the flip in each bit of adjacent page. This operation is performed for all the bits in the adjacent page. The number of program operations performed is limited to 10000. For the bits that are not affected, the value of 0 is recorded.
+							</p>
+							<p>
+								The signature is page based and thus thousands of signatures can be extracted from a single flash memory. The time it takes is between 1-5 minutes.
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Read Disturb</b>: The idea behind read disturb is similar to Program Disturb. Since for read operation, a small current has to be suppled as read current, this current might influence adjacent flash page over a number of times.
+							</p>
+							<p>
+								The number of read operations in a flash page to influence adjacent flash page is limited to 10 million times while the state of adjacent flash page is read after every 1000 read iterations. Despite having good metrics for correlation (high for signature generated from a single page while almost 0 for those from different pages), it is too slow process. It almost took 6 hours to have useful signature for MLC chips.
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Program Operation Latency</b>:  This technique is based on per-bit variation in program latency.Program operation is performed one bit at a time and the latency is recorded such that a single bit contributes a single value to the fingerprint. There are two following variations of the technique as discussed below:
+							</p>
+							<p>
+								<ul>
+									<li>
+										<p>
+											<i>Single Page</i>: Following steps are followed for fingerprint generation:
+											<ul> 
+												<li>Erase the block.</li>
+												<li>Program each bit in a page within a block as follows:</li>
+												<ul>
+													<li>First program operation programs a single '0' followed by ones.</li>
+													<li>Second program operation programs two '0's followed by ones.</li>
+													<li>.. and so on.</li>
+												</ul>
+											</ul>
+										</p>
+									</li>
+									<li>
+										<p>
+											<i>Multi Page:</i>Following steps are followed for fingerprint generation:
 											<ul>
-												<li>First program operation programs a single '0' followed by ones.</li>
-												<li>Second program operation programs two '0's followed by ones.</li>
+												<li>Erase the block</li>
+												<li>Program just the nth bit in page n.</li>
 												<li>.. and so on.</li>
 											</ul>
-										</ul>
+										</p>
+									</li>
+								</ul>
+							</p>
+						</li>
+						<li>
+							Other proposals that were deemed unuseful are as follows:
+							<ul>
+								<li>
+									<b>Erase Lantency</b>:
+									<p>
+										Measure the erase latency for each block in a device and use the resulting sequence of values to form a signature. Offered very little variation, and were inconsistent for individual blocks.
 									</p>
 								</li>
 								<li>
+									<b>Read Lantency</b>:
 									<p>
-										<i>Multi Page:</i>Following steps are followed for fingerprint generation:
-										<ul>
-											<li>Erase the block</li>
-											<li>Program just the nth bit in page n.</li>
-											<li>.. and so on.</li>
-										</ul>
+										Per-page read latency varied very little. In SLC, read latency was constant over entire device.
 									</p>
 								</li>
+								<li>
+									<b>Whole Page program Latency</b>:
+									<p>
+										Whole page program latency offered very little vairation to offer good signature.
+									</p>
+								</li>					
+								<li>
+									<b>Program/Erase Wear</b>:
+									<p>
+										Measuring each bits susceptibility to error because of program/erase induced wear took several hours to extract signature thus making this method ineffective.
+									</p>
+								</li>		
 							</ul>
-						</p>
-					</li>
-					<li>
-						Other proposals that were deemed unuseful are as follows:
-						<ul>
-							<li>
-								<b>Erase Lantency</b>:
-								<p>
-									Measure the erase latency for each block in a device and use the resulting sequence of values to form a signature. Offered very little variation, and were inconsistent for individual blocks.
-								</p>
-							</li>
-							<li>
-								<b>Read Lantency</b>:
-								<p>
-									Per-page read latency varied very little. In SLC, read latency was constant over entire device.
-								</p>
-							</li>
-							<li>
-								<b>Whole Page program Latency</b>:
-								<p>
-									Whole page program latency offered very little vairation to offer good signature.
-								</p>
-							</li>					
-							<li>
-								<b>Program/Erase Wear</b>:
-								<p>
-									Measuring each bits susceptibility to error because of program/erase induced wear took several hours to extract signature thus making this method ineffective.
-								</p>
-							</li>		
-						</ul>
-					</li>
-				</ul>
-			</p>
-		</div>
-	<hr>
-
-	<button type="button" class="collapsible"> <a name="wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a></button>
-		<div class="content">
-			<p>
-				This paper demonstrates NAND flash memrory as a source of entropy for TRNG and PUF generation, and is work done by Wang et al at Cornell University. The idea is based on repeated partial program operation on the flash memory. The original paper can be found at <a href="https://ieeexplore.ieee.org/document/6234403">this link</a>.
-			</p>
-			<p>
-				For RNG, they make use of the Random Telegraphic Noise (RTN) as the source of randomness. RTN is the alternating capturing and emission of carriers at a defect site in a very small electronic device. This capturing and emission, that is random and exponentially distributed, generates discrete variation in the channel current.
-			</p>
-			<p>
-				To observe this noise, the flash memory needs to be in unreliable state so that noise effects the outputs. Thus partial program operation is used to achieve this state that is in-between erased and programmed state. The initial algorithm is described as follows:
-				<ol>
-					<li>The flash memory block is partially programmed. The duration of partial program applied is T (unspecified)</li>
-					<li>
-						The flash memory block is read N times.	
-					</li>
-					<li>
-						Then, for each of the bits, it is checked if there exists RTN.
-					</li>
-					<li>
-						If it does, the number of partial program operation it took is noted, and the bit position is marked as selected. 
-					</li>
-					<li>
-						This partial program operation is repeated until all the bits are marked selected. Go to step 1.
-					</li> 
-				</ol>  
-				The second part of the algorithm, then can be used to generate RNG.
-				<ol>
-					<li>Partial program the flash cell to appropriate levels (as dictated by the number of partial program operations from above) </li>
-					<li>Read each bit M times</li>
-					<li>Record the sequence of up-times and down-times. Since it is RTN, the duration of being up-times and down-times are randomly distibuted.</li>
-					<li>Produce Random bits from the up-times and down-times. If the time is odd, output 1 else output a 0.</li>
-					<li>Perform debiasing</li>
-				</ol>
-			</p>
-			<p>
-				For the device fingerprint, repeated partial program operation is utilized. Following describes the steps involved:
-				<ol>
-					<li>
-						initialize bitRank[i] = 0 for i = all bits in a page
-					</li>
-					<li>
-						Perform partial program operation of flash page (T < rated program time)
-					</li>
-					<li>
-						For all the bits in page:
-						<ul>
-							<li>
-								If the bit is programmed and bitRank[this bit] = 0, bitRank[this bit] = partial program number
-							</li>
-						</ul>
-					</li>
-					<li>
-						1Goto Step2 until 99% bits in the page are programmed
-					</li>
-				</ol>
-				This essentially records the order in which the flash bits attain programmed state from erased state in a flash page.
-			</p>
-		</div>	
-		<hr>
-
-	<button type="button" class="collapsible"> <a name="xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a></button>
-		<div class="content">
-			<p>
-				This paper characterizes the errors and source of errors in flash memory. The authors were affiliated with Cornell University at the time of publication. The original paper can be found at <a href="https://doi.org/10.1109/IMW.2014.6849385"> this link</a>.
-			</p>
-			<p>
-				<i><b>Since this is not focused about PUF but analyzing the nature of variations in flash, will populate later</b></i>
-			</p>
-		</div>
-	<hr>
-
-	<button type="button" class="collapsible"> <a name="jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a></button>
-		<div class="content">
-			<p>
-				This paper presents three techniques for PUF-based key generator using NAND flash memory. The techniques are partial erase, partial programming and program disturbance. The primary author was a member of <i>Data Assurance and Communication Security Research Center, China</i>. The original paper can be found at <a href="https://doi.org/10.1007/978-3-319-23318-5_24">this link</a>.
-			</p>
-			<p>
-				This paper focuses on robust keys rather than just determinig keys from the flash memories. They find the cells in the flash memory whose output are the most reliable over the life time of the flash memory. The position of such flash cells is the helper data.
-			</p>
-			<p>
-				<b>Partial Erase</b> based operation is more or less similar to the idea proposed in Wang et al. paper presented <a href="#wang1">above</a>. However, since this proposal is based on partial erase opration, the number of (fixed duration) partial erase operation that it takes for each flash cell in a page is recorded and is the identity for that particular cell. In a way, it captures the order in which the cells attain erase state from a programmed state.
-			</p>
-			<p>
-				The total number of partial erase operation is limited however to PENum. For some cells that do not attain the partial erase state even after the max number of partial erase operation performed, they are assigned PENum+1.
-			</p>
-			<p>
-				<b>Partial Program</b> based operation is exactly same as partial erase based operation above. Here, the order in which the cells attain erased state is recorded as the number of (fixed duration) partial program operation required by each flash cells to attain programmed state is recorded. After a fixed number of partial program operations PPNum, the cells that are still not in programmed state are assigned PPNum+1
-			</p>
-			<p>
-				<b>Program Disturb</b> based PUF generation induces disturbance in adjacent flash page by performing repeated program operation in a page. Here, fixed number of program operation is performed and after each of the program operation, the state of adjacent page is recorded to see if any cells might have been programmed enough to change their state to programmed state. Following the same suit, here again the number of program operations in the flash page is recorded for each of the flash cells in adjacent page it is needed to flip their state.
-			</p>
-			<p>
-				<b>For reliable cell selection</b>, they employ two methods as follows:
-				<ul>
-					<li>
-						<i>Bit Map Method:</i>
-						<ul>
-							<li>
-								First the raw PUF values for a certain address location is noted. These address location is genrally adjacent locations and the raw PUF values are obtained from any of the three methods above.
-							</li>
-							<li>
-								Between the adjacent values listed above, a difference is computed and absolute of this value is computed as ADvalues.
-							</li>
-							<li>
-								Based on the need, the top n-values from among all the ADvalues are taken. As helper data, the selected pair is assigned 1 and rest unselected pair are assigned 0.
-							</li>
-							<li>
-								For the final key, the two values used to compute the ADvalues is again checked. For each ADvalues, if the former of the two values is greater, then key at that position is 1 otherwise it is assigned 0. Using 6-flash cells, we get 3-bit key.
-							</li>
-						</ul>
-					</li>
-					<li>
-						<i>Position Map Method:</i>
-						<ul>
-							<li>
-								Here instead of selecting the adjacent flash cells, the flash values are first sorted from small to large based on raw PUF values.
-							</li>
-							<li>
-								The lowest three values from among the selected raw PUFs are grouped with the highest three values, ie lowest with highest, lowest-second with highest-second and so on.
-							</li>
-							<li>
-								The cell position of each of the raw PUF values are brought in pair. This is the helper data.
-							</li>
-							<li>
-								For each pair, if the former raw PUF is higher than latter, key generated is 1 while 0 otherwise. Using 6 positions, we get 3-bit key.
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</p>
-		</div>
-		<hr>
-
-	<button type="button" class="collapsible"> <a name="sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a></button>
-		<div class="content">
-			<p>
-				This is not a paper but a tutorial session presented by Sanu Matthew. Matthew was with Circuit Research Labs, Intel @ Hillsboro, Oregon while this presentation was made in ISQED 2020.
-			</p>
-			<p>
-				This is not NAND based, but 14nm CMOS based, and is presented here because of the idea it has. The publication for this can be found at <a href="https://doi.org/10.1109/VLSIC.2018.8502369">this link</a>.
-			</p>
-			<p>
-				The idea presented can be divided into two major categories:
-				<ul>
-					<li>
-						First: There is noise in devices, so suppress the noises. There is process variation in devices, so amplify variation to create a physical identity of a device. Extract <i>static entropy</i>, ie entropy that remains same throughout the lifetime.
-					</li>
-					<li>
-						Second: There is process variation in devices, so suppress the process variation. There is noise in devices, so amplify the noise for randomness or entropy generation. Extract <i>dynamic entropy</i>, ie entropy that is changes.
-					</li>
-				</ul>
-			</p>
-			<p>
-				The idea for PUF generation or TRNG genration presented is to select the candidate bit for either operation. So, a selection criteria is selected, for example: read the bits multiple times (64 times as presented), and pick the ones with higher bias (either towards 0 or 1 state, determined using entropy computation) for PUF generation. Time varying bits can be used for TRNG purpose. This is based on the idea that the bits are time-variant, thus Temporal Majority Voting (TMV) is used. This idea can be easily ported in case of flash memories combined with the idea of flash cells oscillating. Please refer to <a href="https://ieeexplore.ieee.org/document/8443106">this paper</a>.
-			</p>
-			<p>
-				The idea of self-calibration is presented whereupon entropy is tracked for TRNG. If the output of von-Neumann extractor for TRNG is less than 1bit/cycle, then a different column is chosen for TRNG. (the entropy source bits are arranged in 64x8 organization of rows and columns)
-			</p>
-		</div>
-		<hr>
-
-	<button type="button" class="collapsible"> <a name="mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a></button>
-		<div class="content">
-			<p>
-				This document presents PUF generation for NOR flash memory. The author was associated with Virginia Tech and the document is the master's thesis of author. The original document can be found at <a href="https://vtechworks.lib.vt.edu/handle/10919/78200"> this link</a>.
-			</p>
-			<p>
-				The platforms used for demonstration of their idea is Altera DE1-SoC and Altera DE2-115.				
-			</p>
-			<p>
-				The basic idea used in this project is partial programming. The threshold volatge variation is utilized to generate PUF. Here, the address of the flash memory location is the challenge and the response is the bit position of the cell with minimum threshold voltage. Essentially, the idea is to find the flash cell that gets programmed first while applying repeated partial programming operations on a flash memory location.
-			</p>
-			<p>
-				<ol>
-					Following are the steps involved:
-					<li>A partial programming time T is chosen for a flash location.</li>
-					<li>The flash location is erased.</li>
-					<li>Program the flash location for duration T</li>
-					<li>Read the value of the flash location</li>
-					<ul>
-						<li>If any one bit are flipped, the location of the flipped bit is encoded into 3-bit form</li>
-						<li>If nore than one bit is flipped, T is reduced and go to Step 3</li>
-						<li>Else, go to Step 3.</li>
+						</li>
 					</ul>
-				</ol>
-			</p>
-		</div>
+				</p>
+			</div>
 		<hr>
 
-	<button type="button" class="collapsible"> <a name="clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a></button>
-		<div class="content">
-			<p>
-				This document presents PUF generation and TRNG for Superflash NOR  memory. The author was associated with Arizona State University. The original document can be found at <a href="https://doi.org/10.1016/j.vlsi.2017.10.001"> this link</a>.
-			</p>
-			<p>
-				The main idea exploited in this paper is the erase speed variability for the flash cells. The memory used in this research is 1.5T SST Superflash memory that has faster erase because split-gate flash memory has different organzation than stacked gate flash memory.
-			</p>
-			<p>
-				Since such memory are higly efficient, program operation takes only one clock while erase requires multiple cycles. Thus in this research, they employ partial erase operation by interrupting erase operation. Erase operation, however, is yet very fast to be interrupted at nominal operating condition, thus the operating voltage VDD is reduced to lower the internal charge pump voltage. 
-			</p>
-			<p>
-				Interrupting erase operation shows that the number of flash cells that attain erased state increases monotonically with higher erase times. They pick up a time that gives a little more than 50% 1's (flash cells in erased state). The distribution at this point in time shows that the flash cells in each of 1 and 0 state are almost randomly distributed over the block.
-			</p>
-			<p>
-				For authentication, the same operation is repeated but such that it yields less than 50% 1's. The idea is again based on monotonicity: this means that if a binary signature with (for example) 45% 1s is compared with (challenge code) 55% 1s signature, the bits that are 1 in 45% signature should already be at 1 in 55% signature.
-			</p>
-		</div>
+		<button type="button" class="collapsible"> <a name="wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a></button>
+			<div class="content">
+				<p>
+					This paper demonstrates NAND flash memrory as a source of entropy for TRNG and PUF generation, and is work done by Wang et al at Cornell University. The idea is based on repeated partial program operation on the flash memory. The original paper can be found at <a href="https://ieeexplore.ieee.org/document/6234403">this link</a>.
+				</p>
+				<p>
+					For RNG, they make use of the Random Telegraphic Noise (RTN) as the source of randomness. RTN is the alternating capturing and emission of carriers at a defect site in a very small electronic device. This capturing and emission, that is random and exponentially distributed, generates discrete variation in the channel current.
+				</p>
+				<p>
+					To observe this noise, the flash memory needs to be in unreliable state so that noise effects the outputs. Thus partial program operation is used to achieve this state that is in-between erased and programmed state. The initial algorithm is described as follows:
+					<ol>
+						<li>The flash memory block is partially programmed. The duration of partial program applied is T (unspecified)</li>
+						<li>
+							The flash memory block is read N times.	
+						</li>
+						<li>
+							Then, for each of the bits, it is checked if there exists RTN.
+						</li>
+						<li>
+							If it does, the number of partial program operation it took is noted, and the bit position is marked as selected. 
+						</li>
+						<li>
+							This partial program operation is repeated until all the bits are marked selected. Go to step 1.
+						</li> 
+					</ol>  
+					The second part of the algorithm, then can be used to generate RNG.
+					<ol>
+						<li>Partial program the flash cell to appropriate levels (as dictated by the number of partial program operations from above) </li>
+						<li>Read each bit M times</li>
+						<li>Record the sequence of up-times and down-times. Since it is RTN, the duration of being up-times and down-times are randomly distibuted.</li>
+						<li>Produce Random bits from the up-times and down-times. If the time is odd, output 1 else output a 0.</li>
+						<li>Perform debiasing</li>
+					</ol>
+				</p>
+				<p>
+					For the device fingerprint, repeated partial program operation is utilized. Following describes the steps involved:
+					<ol>
+						<li>
+							initialize bitRank[i] = 0 for i = all bits in a page
+						</li>
+						<li>
+							Perform partial program operation of flash page (T < rated program time)
+						</li>
+						<li>
+							For all the bits in page:
+							<ul>
+								<li>
+									If the bit is programmed and bitRank[this bit] = 0, bitRank[this bit] = partial program number
+								</li>
+							</ul>
+						</li>
+						<li>
+							1Goto Step2 until 99% bits in the page are programmed
+						</li>
+					</ol>
+					This essentially records the order in which the flash bits attain programmed state from erased state in a flash page.
+				</p>
+			</div>	
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a></button>
+			<div class="content">
+				<p>
+					This paper characterizes the errors and source of errors in flash memory. The authors were affiliated with Cornell University at the time of publication. The original paper can be found at <a href="https://doi.org/10.1109/IMW.2014.6849385"> this link</a>.
+				</p>
+				<p>
+					<i><b>Since this is not focused about PUF but analyzing the nature of variations in flash, will populate later</b></i>
+				</p>
+			</div>
 		<hr>
 
-	<button type="button" class="collapsible"> <a name="sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a></button>
+		<button type="button" class="collapsible"> <a name="jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a></button>
+			<div class="content">
+				<p>
+					This paper presents three techniques for PUF-based key generator using NAND flash memory. The techniques are partial erase, partial programming and program disturbance. The primary author was a member of <i>Data Assurance and Communication Security Research Center, China</i>. The original paper can be found at <a href="https://doi.org/10.1007/978-3-319-23318-5_24">this link</a>.
+				</p>
+				<p>
+					This paper focuses on robust keys rather than just determinig keys from the flash memories. They find the cells in the flash memory whose output are the most reliable over the life time of the flash memory. The position of such flash cells is the helper data.
+				</p>
+				<p>
+					<b>Partial Erase</b> based operation is more or less similar to the idea proposed in Wang et al. paper presented <a href="#wang1">above</a>. However, since this proposal is based on partial erase opration, the number of (fixed duration) partial erase operation that it takes for each flash cell in a page is recorded and is the identity for that particular cell. In a way, it captures the order in which the cells attain erase state from a programmed state.
+				</p>
+				<p>
+					The total number of partial erase operation is limited however to PENum. For some cells that do not attain the partial erase state even after the max number of partial erase operation performed, they are assigned PENum+1.
+				</p>
+				<p>
+					<b>Partial Program</b> based operation is exactly same as partial erase based operation above. Here, the order in which the cells attain erased state is recorded as the number of (fixed duration) partial program operation required by each flash cells to attain programmed state is recorded. After a fixed number of partial program operations PPNum, the cells that are still not in programmed state are assigned PPNum+1
+				</p>
+				<p>
+					<b>Program Disturb</b> based PUF generation induces disturbance in adjacent flash page by performing repeated program operation in a page. Here, fixed number of program operation is performed and after each of the program operation, the state of adjacent page is recorded to see if any cells might have been programmed enough to change their state to programmed state. Following the same suit, here again the number of program operations in the flash page is recorded for each of the flash cells in adjacent page it is needed to flip their state.
+				</p>
+				<p>
+					<b>For reliable cell selection</b>, they employ two methods as follows:
+					<ul>
+						<li>
+							<i>Bit Map Method:</i>
+							<ul>
+								<li>
+									First the raw PUF values for a certain address location is noted. These address location is genrally adjacent locations and the raw PUF values are obtained from any of the three methods above.
+								</li>
+								<li>
+									Between the adjacent values listed above, a difference is computed and absolute of this value is computed as ADvalues.
+								</li>
+								<li>
+									Based on the need, the top n-values from among all the ADvalues are taken. As helper data, the selected pair is assigned 1 and rest unselected pair are assigned 0.
+								</li>
+								<li>
+									For the final key, the two values used to compute the ADvalues is again checked. For each ADvalues, if the former of the two values is greater, then key at that position is 1 otherwise it is assigned 0. Using 6-flash cells, we get 3-bit key.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<i>Position Map Method:</i>
+							<ul>
+								<li>
+									Here instead of selecting the adjacent flash cells, the flash values are first sorted from small to large based on raw PUF values.
+								</li>
+								<li>
+									The lowest three values from among the selected raw PUFs are grouped with the highest three values, ie lowest with highest, lowest-second with highest-second and so on.
+								</li>
+								<li>
+									The cell position of each of the raw PUF values are brought in pair. This is the helper data.
+								</li>
+								<li>
+									For each pair, if the former raw PUF is higher than latter, key generated is 1 while 0 otherwise. Using 6 positions, we get 3-bit key.
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a></button>
+			<div class="content">
+				<p>
+					This is not a paper but a tutorial session presented by Sanu Matthew. Matthew was with Circuit Research Labs, Intel @ Hillsboro, Oregon while this presentation was made in ISQED 2020.
+				</p>
+				<p>
+					This is not NAND based, but 14nm CMOS based, and is presented here because of the idea it has. The publication for this can be found at <a href="https://doi.org/10.1109/VLSIC.2018.8502369">this link</a>.
+				</p>
+				<p>
+					The idea presented can be divided into two major categories:
+					<ul>
+						<li>
+							First: There is noise in devices, so suppress the noises. There is process variation in devices, so amplify variation to create a physical identity of a device. Extract <i>static entropy</i>, ie entropy that remains same throughout the lifetime.
+						</li>
+						<li>
+							Second: There is process variation in devices, so suppress the process variation. There is noise in devices, so amplify the noise for randomness or entropy generation. Extract <i>dynamic entropy</i>, ie entropy that is changes.
+						</li>
+					</ul>
+				</p>
+				<p>
+					The idea for PUF generation or TRNG genration presented is to select the candidate bit for either operation. So, a selection criteria is selected, for example: read the bits multiple times (64 times as presented), and pick the ones with higher bias (either towards 0 or 1 state, determined using entropy computation) for PUF generation. Time varying bits can be used for TRNG purpose. This is based on the idea that the bits are time-variant, thus Temporal Majority Voting (TMV) is used. This idea can be easily ported in case of flash memories combined with the idea of flash cells oscillating. Please refer to <a href="https://ieeexplore.ieee.org/document/8443106">this paper</a>.
+				</p>
+				<p>
+					The idea of self-calibration is presented whereupon entropy is tracked for TRNG. If the output of von-Neumann extractor for TRNG is less than 1bit/cycle, then a different column is chosen for TRNG. (the entropy source bits are arranged in 64x8 organization of rows and columns)
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a></button>
+			<div class="content">
+				<p>
+					This document presents PUF generation for NOR flash memory. The author was associated with Virginia Tech and the document is the master's thesis of author. The original document can be found at <a href="https://vtechworks.lib.vt.edu/handle/10919/78200"> this link</a>.
+				</p>
+				<p>
+					The platforms used for demonstration of their idea is Altera DE1-SoC and Altera DE2-115.				
+				</p>
+				<p>
+					The basic idea used in this project is partial programming. The threshold volatge variation is utilized to generate PUF. Here, the address of the flash memory location is the challenge and the response is the bit position of the cell with minimum threshold voltage. Essentially, the idea is to find the flash cell that gets programmed first while applying repeated partial programming operations on a flash memory location.
+				</p>
+				<p>
+					<ol>
+						Following are the steps involved:
+						<li>A partial programming time T is chosen for a flash location.</li>
+						<li>The flash location is erased.</li>
+						<li>Program the flash location for duration T</li>
+						<li>Read the value of the flash location</li>
+						<ul>
+							<li>If any one bit are flipped, the location of the flipped bit is encoded into 3-bit form</li>
+							<li>If nore than one bit is flipped, T is reduced and go to Step 3</li>
+							<li>Else, go to Step 3.</li>
+						</ul>
+					</ol>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a></button>
+			<div class="content">
+				<p>
+					This document presents PUF generation and TRNG for Superflash NOR  memory. The author was associated with Arizona State University. The original document can be found at <a href="https://doi.org/10.1016/j.vlsi.2017.10.001"> this link</a>.
+				</p>
+				<p>
+					The main idea exploited in this paper is the erase speed variability for the flash cells. The memory used in this research is 1.5T SST Superflash memory that has faster erase because split-gate flash memory has different organzation than stacked gate flash memory.
+				</p>
+				<p>
+					Since such memory are higly efficient, program operation takes only one clock while erase requires multiple cycles. Thus in this research, they employ partial erase operation by interrupting erase operation. Erase operation, however, is yet very fast to be interrupted at nominal operating condition, thus the operating voltage VDD is reduced to lower the internal charge pump voltage. 
+				</p>
+				<p>
+					Interrupting erase operation shows that the number of flash cells that attain erased state increases monotonically with higher erase times. They pick up a time that gives a little more than 50% 1's (flash cells in erased state). The distribution at this point in time shows that the flash cells in each of 1 and 0 state are almost randomly distributed over the block.
+				</p>
+				<p>
+					For authentication, the same operation is repeated but such that it yields less than 50% 1's. The idea is again based on monotonicity: this means that if a binary signature with (for example) 45% 1s is compared with (challenge code) 55% 1s signature, the bits that are 1 in 45% signature should already be at 1 in 55% signature.
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a></button>
 		<div class="content">
 			<p>
 				This paper demonstrates a technique for generation of PUF from NAND flash memory such that the PUF is aging-resistant by introducing tunable-parameters. Authors of this papers were associated with The University of Alabama in Huntsville while it was published. The original paper can be found at <a href="https://ieeexplore.ieee.org/document/8993414">this link</a>.
@@ -434,114 +444,494 @@
 		</div>
 		<hr>
 		<hr>
+	</div>
 
-
-
-	<a name="puflist"><h2 align="center">SSD Studies</h2></a>
-	<hr>
-	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
-		<p>
-			Following is the list of paper studied about the SSDs.
-			<ul>
-				<li>
-					<a href="#maneas1">A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</a>
-				</li>
-			</ul>
-		</p>
+	<a name="sanit"><h2 align="center"><a name="sanit">Sanitization Study</a></h2></a>
+	<div>
 		<hr>
-
-	<button type="button" class="collapsible"> <a name="maneas1">Paper: <i>A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</i></a></button>
-		<div class="content">
-			<p>
-				<li>
-					The original paper can be found at <a href="https://www.usenix.org/system/files/fast20-maneas.pdf">this link</a>. This paper was presented in USENIX FAST2020 and was awarded best paper.
-				</li>
-				<li>
-					Large scale study focused on enterprise storage systems, study conducted on 1.4 million SSDs of NetApp which is a major storage vendor.
-				</li>
-				<li>
-					Netapp storage system employ WAFL file systems and DATA ONTAP operating system which uses software RAID to provide resiliency against drive failures.
-				</li>
-				<li>
-					Data over the nw is serviced using file-based protocols as NFS and CIFS/SMB or block-based protocols such as iSCSI
-				</li>
-				<li>
-					Netapp systems in field send weekly NetApp Active IQ bundles that track a  very large set of system and device parameters. This study is based in mining this collection of NetApp Active IQ messages.
-				</li>
-				<li>
-					Different types of failures are categorized. The most severe of them that prompts replacement of drives was SCSI error. These error are due to ECC errors. Majority of other errors were recovered by RAID reconstruction.
-				</li>
-				<li>
-					Replacement rate: number of device failures divided by number of device years.
-				</li>
-				<li>
-					For the causes of errors or the factors impacting replacement rates:
+		<button type="button" class="collapsible"> <i>List of sources</i></button>
+			<div >
+				<p>
 					<ul>
+						Following are the sources of the contents:
 						<li>
-							Usage and Age: A increasing failure rates of long period 12-15 months in the beginning, and 6-12 months of decreasing failure rates before finally stabilizing for 3D-TLC and eMLC (enterprise MLC) drives.
+							<a href="#proposal">From Proposal</a>
 						</li>
 						<li>
-							3D-TLC failure rates is higher than other types, thus the replacement reateis higher. Also 3d-TLC uses 10-15X times more for spare blocks
+							<a href="#stateofart">State of the Art</a>
 						</li>
 						<li>
-							Higher capacity drives have higher replacement rates and more severe failures too (unresponsive drives).
+							<a href="#evanescoM">Evanesco: Motivation</a>
 						</li>
 						<li>
-							High density drives have higher replacment rates.
-						</li>
-						<li>
-							EMphasize importance of firmware updates
-						</li>
-						<li>
-							Most of the systems make use of only 15% of rated life of device, thus there should be no concern to updatd to QLC.
+							<a href="#evanescoP">Evanesco: Proposal</a>
 						</li>
 					</ul>
-				</li>
+				</p>
+			</div>
+		<button type="button" class="collapsible"> <a name="proposal"></a><i>From Proposal</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the proposal that was submitted to NSF by Dr Biswajit Ray and Dr Aleksandar Milenkovic.
+					</p>
+					<p>
+						The major idea is that instant deletion of data from the memory has become extremely important to preserve privacy of the user. According to <a href="http://www.legislation.gov.uk/ukpga/2018/12/contents/enacted"> Data Protection Act (DPA) 2018</a>, the deletion of imformation should be real and should not be recoverable in any way. However, current trend in SSD's do not offer any permanent data deletion strategy.
+					</p>
+					<p>
+						NAND flash or flash memory in general follow the trend of erase before write paradigm, which means before any program operation erase has to be performed. But the granularity of erase (a block) is much larger than program (a page), thus for any modification of data is performed by copying the entire data, modifying it and writing it to a new location. The old data is simply marked as invalid or is unlinked where the original data content still remains. These pages are technically unreachable or unaddressable through the Flash Translation Layer (FTL).
+					</p>
+					<p>
+						For the page level deletion of data, Wei et al introduced the concept of "scrubbing", which means write 0s to all the flash memory location. This corresponds to essentially deletion of data from a page by program operation. Program operation is possible in page-level granularity, thus deletion from page is possible. However, the "scrubbing" technique does not properly delete the data. There has been experimental demonstration where the data is recovered from a "scrubbed" flash memory by analyzing the physical property of the scrubbed flash memory.
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"><a name="stateofart"></a> <i>State of the Art</i></button>
+				<div class="content">
+					<p>
+						The content here is still derived from the same proposal.
+					</p>
+					<p>
+						<ul>
+							<li>Block Erase: Erase the complete block. This means the charges trapped in the Floating Gate is removed. Garbage Collection of FTL uses this mechanism to remove the contents or free space when the drive is almost full. Poor performance because of significant data movement.</li><br>
+							<li>Logical Sanitization: To overcome the performance hit by block erase, logical sanitization is performed. This works by simply invalidating the data that are obsolete. The old data still remains in the memory.</li><br>
+							<li>Encryption Based Sanitization: Encrypt the user file and store the data and key in separate blocks. Remove the keys, thus securely invalidating the data.</li><br>
+							<li>Digital Sanitization (Scrubbing): Write 0s to the memory in page-level deletion strategy.</li><br>
+							<li>Analog Sanitization: Perform repeated partial erase operation until completely erased.</li>
+						</ul>
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="evanescoM"></a><i>Architectural Support for Sanitization: Introduction and Motivation</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the paper that can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/evanesco-secure-data-sanitization-for-flash-memory_asplos20.pdf">this link.</a>
+					</p>		
+					<p>
+						It is challenging to erase a file without large performance penalty or reliability issue in modern  NAND. Evanesco is a new technique for high-density 3D NAND flash memory. Evanseco, instead of physically destroying data, blocks access to the data. Two commands, pLock and bLock are designed that block access to the page and block respecively of the data deleted. These locked memories can only be accessed after erase operation, thus the claim is that a strong security is guaranteed. Erase or program based data deletion technique will rapidly reduce the quality of the flash memory.
+					</p>	
+					<p>
+						Performance analysis done on 160 3D TLC NAND memory on FlashBench with their proposal enabled flash model. Benchmarks are workloads collected from enterprise servers and mobile systems. 
+					</p>
+					<p>
+						In the new architecture, a read request to the locked location will always return all 0s.
+					</p>
+					<p>
+						FTL is the special embedded software that is employeed in flash-based storage system. FTL writes in append-only fashion which means new data is stored in a new physical page for performance reasons by avoiding longer block erases. Thus a logical to physical mapping table (L2P) is maintained. For updating a data, the updated data is written to a new free page, the link in LPA table is updated to new physical address, state of new physical page changed to valide from free and the old physical page's state is made invalid.
+					</p>
+					<p>
+						When the system is about to run out of the free pages, a Garbage Collector is invoked. This reclaims the free pages by erasing victim blocks (blocks with invalid pages). If there are valid pages in the victim blocks that are to be erased, these pages have to be copied elsewhere first, and remapped in the L2P. 
+					</p>
+					<p>
+						The trend of having a multple copies of a file while updating (or deleting) a file is called <i>data versioning problem</i> in this paper. Experiment to measure how many invalid versions of a file exist throughout the lifetime of a file is conducted. Tools used are: VerTrace, an extension of IOPro and FlashBench (they made all three of these tools). Essentially, the goal is to keep track of number of valid and invalid pages of a file at any time in the flash memory. Three benchmarks traces, Mobile, MailServer and DBServer are used. Maximum storage emulated is 16GiB. Ultimate goal of the evaluation is to find the number of invlaid versions of file that exists and for how long the invalid versions remain.
+					</p>
+					<p>
+						<ul>
+							Types of files:
+							<li>Uni-version: File when modified such that content of older version is a subset of new file ie file at time t is subset of file at time t+1.</li>
+							<li>Multi-version: Any file that is not Uni-version file.</li>
+						</ul>
+						<ul>
+							Quantities measured for each files are:
+							<li>Version Amplification Factor: Maximum of (for all time of observation (ratio of invalid pages to valid pages))</li>
+							<li>Total Insecure Interval: Time for which the number of invalid pages is greater than 0.</li>
+						</ul>
+						The observation show that files have a large number of invalid pages for a long time.
+					</p>
+					<p>
+						Existing technique destroy data by changing Vth of flash cell. Scrubbing technique increases Vth of all flash cell in WL so that Vth distrubutions of different states are mixed together such that original data identification is impossible. 
+					</p>
+					<p>
+						But this technique is not efficient in MLC or TLC NAND as there are multiple pages in  a single Wordline. Thus efficient reprogramming based sanitization technique is proposed for MLC NAND memory. This technique uses one-shot programming technique with lowered voltage such that content can be safely destroyed, and other pages in the same wordline is not impacted. Zero copy overhead is incurred as there is no copy operation needed. Sanitization of LSB and MSB can be independent. But there is always chance of overprogramming, so that the shift of Vth is too much.
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="evanescoP"></a><i>Architectural Support for Sanitization: Proposal</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the paper that can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/evanesco-secure-data-sanitization-for-flash-memory_asplos20.pdf">this link.</a>
+					</p>
+					<p>
+						The access to the page is controlled by access-permission (AP) flag. Two kinds of AP flags: pAP (for page) and bAP (for block) inside the flash chip that are controlled by two commands pLock and bLock respectively. Command pLock&ltppn&gt locks the physical page number ppn by setting the pAP flag to disable state. Similarly, bLock&ltpbn&gt blocks the access to the physical block number pbn by setting bAP flag to disabled state. No unlock commands are present and unlock is automatically done once the block is erased. Thus data is permanently inaccessible before erase cycle once locked. The logic is implemented into the flash chip itself.
+					</p>
+					<p>
+						<b>Page Level Sanitization:</b> For each page, along with the main area of data storage, some spare storage space for flags storage is available. The flags are stored in this location. For every access made to a page, the data copied to the cache or buffer is only sent to output if the flag value pAP is not disabled. Since in MLC and TLC, multiple flags are needed in each WL. For individual programming of these cells, self-boost program inhibit (SBPI) is used that allows flash cells in a single WL to be selectively programed by choosing different voltage settings for different BLs.
+					</p>
+					<p>
+						<b>Block Level Sanitization:</b> If a large number of pages are to be sanitized, PLock becomes non-trivial and incurs overhead. A single block sanitization can sanitize a large number of pages at once. This only works in 3D as the bAP flag is implemented in SSL (Source Select Line) of 3D NAND as 3D NAND use normal flash cell (that allows for SSL to act as WL) for SSL rather than transistor. 
+					</p>
+				</div>
+				<hr>
+				<hr>
+	</div>
+
+	<a name="ssdlist"><h2 align="center">SSD Studies</h2></a>
+	<div>
+		<hr>
+		<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+			<p>
+				Following is the list of paper studied about the SSDs.
+				<ul>
+					<li>
+						<a href="#maneas1">A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</a>
+					</li>
+				</ul>
 			</p>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="maneas1">Paper: <i>A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</i></a></button>
+			<div class="content">
+				<p>
+					<li>
+						The original paper can be found at <a href="https://www.usenix.org/system/files/fast20-maneas.pdf">this link</a>. This paper was presented in USENIX FAST2020 and was awarded best paper.
+					</li>
+					<li>
+						Large scale study focused on enterprise storage systems, study conducted on 1.4 million SSDs of NetApp which is a major storage vendor.
+					</li>
+					<li>
+						Netapp storage system employ WAFL file systems and DATA ONTAP operating system which uses software RAID to provide resiliency against drive failures.
+					</li>
+					<li>
+						Data over the nw is serviced using file-based protocols as NFS and CIFS/SMB or block-based protocols such as iSCSI
+					</li>
+					<li>
+						Netapp systems in field send weekly NetApp Active IQ bundles that track a  very large set of system and device parameters. This study is based in mining this collection of NetApp Active IQ messages.
+					</li>
+					<li>
+						Different types of failures are categorized. The most severe of them that prompts replacement of drives was SCSI error. These error are due to ECC errors. Majority of other errors were recovered by RAID reconstruction.
+					</li>
+					<li>
+						Replacement rate: number of device failures divided by number of device years.
+					</li>
+					<li>
+						For the causes of errors or the factors impacting replacement rates:
+						<ul>
+							<li>
+								Usage and Age: A increasing failure rates of long period 12-15 months in the beginning, and 6-12 months of decreasing failure rates before finally stabilizing for 3D-TLC and eMLC (enterprise MLC) drives.
+							</li>
+							<li>
+								3D-TLC failure rates is higher than other types, thus the replacement reateis higher. Also 3d-TLC uses 10-15X times more for spare blocks
+							</li>
+							<li>
+								Higher capacity drives have higher replacement rates and more severe failures too (unresponsive drives).
+							</li>
+							<li>
+								High density drives have higher replacment rates.
+							</li>
+							<li>
+								EMphasize importance of firmware updates
+							</li>
+							<li>
+								Most of the systems make use of only 15% of rated life of device, thus there should be no concern to updatd to QLC.
+							</li>
+						</ul>
+					</li>
+				</p>
+			</div>
+
+			<hr>
+			<hr>
+	</div>
+
+	<a name="fsstudy"><h2 align="center">File Systems Study</h2></a>
+	<div>
+		<hr>
+		<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+			<p>
+				Following is the list of paper studied about the SSDs.
+				<ul>
+					<li>
+						<a href="#ext4">The new ext4 filesystem: current status and future plans</a>
+					</li>
+					<li>
+						<a href="#matias1">From Open-Channel SSDs to Zoned Namespaces</a>
+					</li>
+					<li>
+						<a href="#zoned1">NVMe Zoned Namespaces</a>
+					</li>
+					<li>
+						<a href="#parallelfirmware1">Scalable Parallel Flash Firmware for Many-Core Architectures</a>
+					</li>
+					<li>
+						<a href="#flashsearch1">Read as Needed: Building WiSER, a Flash Optimized Search Engine</a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="ext41">Paper: <i>The new ext4 filesystem: current status and future plans</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							The original paper can be found at <a href="https://pdfs.semanticscholar.org/b8dd/ec47f9fab1eddb5c9cacf703781dd5337b87.pdf"> this link</a>
+						</li>
+					</ul>
+				</p>
+			</div>
+		
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="matias1">Presentation: <i>From Open-Channel SSDs to Zoned Namespace</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							This is a presentation that can be found at <a href="https://www.usenix.org/sites/default/files/conference/protected-files/nsdi19_slides_bjorling.pdf">this link</a>. It was presented by Matais Bjorling, Director Solid-State System Software of Western Digital at USENIX 2019.
+						</li>
+						<li>
+							Presents forward-looking statements regarding Solid State techs, product development efforts, software development etc
+						</li>
+						<li>
+							Open Channel SSD architectures:
+							<ul>
+								<li>
+									No FTL present but leaves the management of device to OS. Linux 4.4 kernel supports Open Channel using NVM Express specification.
+								</li>
+								<li>
+									Chunks: Zoned namespace
+								</li>
+								<li>
+									Parallel Groups: Endurance management groups.
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="zoned1">Website: <i>NVMe Zoned Namespaces</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<ul>
+							Let us First talk about zoned storage itself <a href="https://zonedstorage.io/introduction/zoned-storage/">(this link)</a>:
+							<li>
+								It is a class of storage devices that is divided into zones. Each zones have a write pointer that keeps track of position of next data to be written.
+							</li>
+							<li>
+								Data in a zone cannot be overwritten and must be erased first.
+							</li>
+							<li>
+								SSDs can also implement zoned interface to reduce write amplification, reduce the device DRAM needs and improve quaity of service at scale.
+							</li>
+							<li>
+								Support for zoned storage was added to Linux in version 4.10.0, and is based on Zoned Block Device abstraction. The interface associated with ZBD is an extension to traditional Linux block device interface.
+							</li>
+							<li>
+								Zoned storage is used in Shingled Magnetic Recording (SMR) which is different from Conventional Magnetic Recording (CMR) used in hard disk drives. SMR provides more areal density than CMR because SMR removes the gaps that are placed in CMR.
+							</li>
+							<li>
+								CMR places gaps in tracks of HDDs to account for Track MisRegistration (TMR) budget. This impacts the density negatively as the area is not fully utilized. SMR removes needs for gaps by writing tracks in overlapping manner, forming pattern similar to shingles on a roof.
+							</li>
+							<li>
+								While performing a write, the write head (which area bit wider than conventional ones) overlap part of another track thus leaving a narrower track band for reading.
+							</li>
+							<li>
+								The overlapping tracks are gouped into bands called zones of fized capacity for more effective data organization and partial update capacity.
+							</li>
+							<li>
+								Gaps are however present between zones to prevent overwrite between zones.
+							</li>
+							<li>
+								Because of the shingled organization, data has to be written sequentially. To overwrite, entire band or zone has to be re-written.
+							</li>
+						</ul>
+						<li>
+							The original content can be found at <a href="https://zonedstorage.io/introduction/zns/">this link</a>.
+						</li>
+						<li>
+							Zoned namespace divides the logical address space of a namespace into zones.
+						</li>
+						<li>
+							Each zones provides an LBA range that must be written sequentially and if written again must be explicitly reset.
+						</li>
+						<li>
+							It introduces a new type of NVMe drive that has several benefits over traditional NVMe SSDs.
+						</li>
+						<li>
+							ZNS is similar to HDDs Shingled Magnetic Recording zones that must be written sequentially and explicilty reset before rewritting.
+						</li>
+						<li>
+							The problem of log-on-log is solved naturally. Please read <a href="https://www.usenix.org/system/files/conference/inflow14/inflow14-yang.pdf">this paper</a> for log on log concept.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="parallelfirmware1">Paper: <i>Scalable Parallel Flash Firmware for Many-core Arch (read later)</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Published in FAST'20, the original link can be found at <a href="https://www.usenix.org/system/files/fast20-zhang_jie.pdf">this link</a>.
+						</li>
+						<li>
+							NVMe allows users to exploit all levels of parallelism, but current firmware design are not scalable and have difficult time in handling high IO requests in parallel
+						</li>
+						<li>
+							They propose DeepFlash that is manycore-based storage platform that can process more than a million IO requests in a seconds while hiding long latencies imposed by internal media.
+						</li>
+						<li>
+							Many to many threading model that can be scaled horizontally.
+						</li>
+						<li>
+							Implement prototype in many core processor that empolys dozens of light weight cores and perform parallel IO. Deepflash can serve around 4.5GB/s
+						</li>
+					</ul>
+					<ul>
+						Intro:
+						<li>
+							NVMe is designed to make use of parallelism at all levels of SSDs. NVMe provides 64K deep queues.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="flashsearch1">Paper: <i>Read as Needed: Building WiSER, a flash optimized search engine(read later)</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Published in FAST'20, the original link can be found at <a href="https://www.usenix.org/system/files/fast20-he.pdf">this link</a>.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+
+
+			<hr>
+			<hr>
+	</div>
+
+	<a name="otherstudy"><h2 align="center">Other Study</h2></a>
+	<div>
+		<hr>
+		<button type="button" class="collapsible"><a href="#otherstudy"></a> <i>List of Papers Studied </i></button>
+		<div>
+			<p>
+				Following are the papers studied:
+				<ul>
+					<li>
+						<a href="#iopro">Improving File System Performance of Mobile Storage Systems Using a Decoupled Defragmenter</a>
+					</li>
+					<li>
+						<a href="#flashbench">FlashBench: A workbench for a rapid development of flash-based storage devices</a>
+					</li>
+					<li>
+						<a href="#optanecontract">Towards an Unwritten Contract of Intel Optane SSD</a>
+					</li>
+				</ul>
+			</p>	
 		</div>
-
 		<hr>
-		<hr>
-
-	<a name="puflist"><h2 align="center">File Systems Study</h2></a>
-	<hr>
-	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
-		<p>
-			Following is the list of paper studied about the SSDs.
-			<ul>
-				<li>
-					<a href="#matias1">From Open-Channel SSDs to Zoned Namespaces</a>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<a href="#zoned1">NVMe Zoned Namespaces</a>
-				</li>
-			</ul>
-		</p>
-		<hr>
-
-	<button type="button" class="collapsible"> <a name="matias1">Presentation: <i>From Open-Channel SSDs to Zoned Namespace</i></a></button>
+		<button type="button" class="collapsible"> <a name="iopro">Improving File System Performance of Mobile Storage Systems Using a Decoupled Defragmenter</a></button>
 		<div class="content">
 			<p>
 				<ul>
 					<li>
-						This is a presentation that can be found at <a href="https://www.usenix.org/sites/default/files/conference/protected-files/nsdi19_slides_bjorling.pdf">this link</a>. It was presented by Matais Bjorling, Director Solid-State System Software of Western Digital at USENIX 2019.
+						The file can be found at <a href="https://www.usenix.org/system/files/conference/atc17/atc17-hahn.pdf"> this link</a>
 					</li>
 					<li>
-						Presents forward-looking statements regarding Solid State techs, product development efforts, software development etc
+						Investigate file fragment problem in mobile flash storage
 					</li>
 					<li>
-						Open Channel SSD architectures:
+						Observation based on real android smartphones:
 						<ul>
 							<li>
-								No FTL present but leaves the management of device to OS. Linux 4.4 kernel supports Open Channel using NVM Express specification.
+								Defragmentation is essential because fragmentation is recurring problem
 							</li>
 							<li>
-								Chunks: Zoned namespace
+								Fragmentation in flash affects differently than in HDDs. In flash, the logical and physical fragmentation is decoupled and the degradation in perf comes mostly from logical fragmentation.
 							</li>
 							<li>
-								Parallel Groups: Endurance management groups.
+								They propose two defragger tools: janusdL for logical and janusdP for physical
+							</li>
+							<li>
+								the combined tool is janusd, that has similar performance to e4defrag without effecting flash lifetime.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Introduction:
+						<ul>
+							<li>
+								When a file system is fragmented, it has to allocate multiple storage areas. In HDDs this causes longer seek times thus periodic defragmentation is recommended. But in flash, it is not recommended. This is because seek operation is not required in flash memories and thus fragmentation negligibly affect performance. Frequent deframentation might lead to effect in lifetime. This paper performs a systematic study of these things.
+							</li>
+							<li>
+								Two questions in this paper: 1. How does defragmentation affect the performance? 2. How long does defragmentation last?
+							</li>
+							<li>
+								They show that defragmentation improves the performance like app launching time by upto 52%.
+							</li>
+							<li>
+								File fragmentation recurs after a week or so even after full file defragmentation. Since the apps update quickly, defragmentation disappears qiuckly.
+							</li>
+							<li>
+								Regular defragger like e4defrag is not good for frequent defragmentation because it affects the lifetime of flash memory. Invoking each week may lead to reduction of life by 10% or more.
+							</li>
+							<li>
+								Flash memories in mobiles have dcoupled fragmentation because the performance of physical IO is dependent upon the avaiilable of IO rathar than upon logical fragmentation. Regardless of how much the file is fragmented in logical layer, the device IO performance at the physical layer is unaffected. HOwever, the logically fragmented files significantly increase processing times in block IO layer and device driver because of large number of block IO requests.
+							</li>
+							<li>
+								Thus defragmentation of logical space effictevly is needed.
+							</li>
+							<li>
+								And, an independent physical defragger is needed as well because logical defragger would not be able to identify physical fragmented file.
+							</li>
+							<li>
+								validated on emulated mobile flash storage: simeMMC and simUFS.
+							</li>
+						</ul>
+					</li>
+					<li>
+						File Fragmentation Study
+						<ul>
+							<li>
+								Based on 14 used android smartphones from 5 different manufacturers with 6 months use
+							</li>
+							<li>
+								Fragmentation Metric is degree of fragmentation which they define as ratio of number of extent allocated to the file x by the number of extent required by the file. (in ext4 file format, each extent is 128 MB which is a chunk of memory unit allocated). The higher the number of extents, the higher is fragmentation.
+							</li>
+							<li>
+								FIle fragmentation is a recurring problem especially when file system utilization is high.
+							</li>
+							<li>
+								App launching time was longer with time and it is also when the file utlization waas high. App launching time is time when the icon is pressed to the time when the app is loaded fully.
+							</li>
+							<li>
+								But if defragmentation is performed, large number of file are copied here and there, thus impacting the life of the flash.
+							</li>
+							<li>
+								To understand how logical fragmentation affects overhead in system software stack, they built IOPro that can profile complete Android stack from app level to device driver level. Time spent at different layers in the stack can be measured using IOPro.
+							</li>
+							<li>
+								For this research they measured time spent in Ext4 file system, page cache, block layer, the device driver and mobile flash storage.
+							</li>
+							<li>
+								Observation: Time spent in   block layer, device driver layer, the flash storage layer increases with DOFlogical. Whle time spent in file system layer and page cahce layer are barely affected.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Design and Implementation of Defragmentation Tool:
+						<ul>
+							<li>
+								<i>study later</i>
 							</li>
 						</ul>
 					</li>
@@ -549,71 +939,85 @@
 			</p>
 		</div>
 		<hr>
-
-	<button type="button" class="collapsible"> <a name="zoned1">Website: <i>NVMe Zoned Namespaces</i></a></button>
+		<button type="button" class="collapsible"> <a name="flashbench">FlashBench: A workbench for a rapid development of flash-based storage devices</a></button>
 		<div class="content">
 			<p>
 				<ul>
-					<ul>
-						Let us First talk about zoned storage itself <a href="https://zonedstorage.io/introduction/zoned-storage/">(this link)</a>:
-						<li>
-							It is a class of storage devices that is divided into zones. Each zones have a write pointer that keeps track of position of next data to be written.
-						</li>
-						<li>
-							Data in a zone cannot be overwritten and must be erased first.
-						</li>
-						<li>
-							SSDs can also implement zoned interface to reduce write amplification, reduce the device DRAM needs and improve quaity of service at scale.
-						</li>
-						<li>
-							Support for zoned storage was added to Linux in version 4.10.0, and is based on Zoned Block Device abstraction. The interface associated with ZBD is an extension to traditional Linux block device interface.
-						</li>
-						<li>
-							Zoned storage is used in Shingled Magnetic Recording (SMR) which is different from Conventional Magnetic Recording (CMR) used in hard disk drives. SMR provides more areal density than CMR because SMR removes the gaps that are placed in CMR.
-						</li>
-						<li>
-							CMR places gaps in tracks of HDDs to account for Track MisRegistration (TMR) budget. This impacts the density negatively as the area is not fully utilized. SMR removes needs for gaps by writing tracks in overlapping manner, forming pattern similar to shingles on a roof.
-						</li>
-						<li>
-							While performing a write, the write head (which area bit wider than conventional ones) overlap part of another track thus leaving a narrower track band for reading.
-						</li>
-						<li>
-							The overlapping tracks are gouped into bands called zones of fized capacity for more effective data organization and partial update capacity.
-						</li>
-						<li>
-							Gaps are however present between zones to prevent overwrite between zones.
-						</li>
-						<li>
-							Because of the shingled organization, data has to be written sequentially. To overwrite, entire band or zone has to be re-written.
-						</li>
-					</ul>
 					<li>
-						The original content can be found at <a href="https://zonedstorage.io/introduction/zns/">this link</a>.
+						The file can be found at <a href="https://ieeexplore.ieee.org/document/6380706"> this link</a>
 					</li>
 					<li>
-						Zoned namespace divides the logical address space of a namespace into zones.
+						Performance of NAND decreases with scaling, thus to counter the demerits, a cross-layer system level approach that employs system level approach is emerging as a promising solution. eg Data Compression and high speed accelerator etc considering the endurance is dependent upon the amount of data written to flash.
 					</li>
 					<li>
-						Each zones provides an LBA range that must be written sequentially and if written again must be explicitly reset.
+						To make use of changes in hardware, the software modules shold also be redesigned eg. address mapping, garbage collection etc.
 					</li>
 					<li>
-						It introduces a new type of NVMe drive that has several benefits over traditional NVMe SSDs.
+						Data deduplication can be used to reduce the amount of data written to flash.
 					</li>
 					<li>
-						ZNS is similar to HDDs Shingled Magnetic Recording zones that must be written sequentially and explicilty reset before rewritting.
+						Cross system layer solution is good in handling the challenges of newer NAND memory but it increases the complexity and cost of design.
 					</li>
 					<li>
-						The problem of log-on-log is solved naturally. Please read <a href="https://www.usenix.org/system/files/conference/inflow14/inflow14-yang.pdf">this paper</a> for log on log concept.
+						In this paper, they present a flash storage development environment called FlashBench
+						<ul>							
+							<li>
+								Flashbench provides multiple design environments at different design levels	
+							</li>
+							<li>
+								Flashbench enables rapid development and validation of tightly coupled sw/hw modules by providing high level sw/hw dev platform
+							</li>
+							<li>
+								FLashbench helps to implement flexible and portable software modules.
+							</li>
+						</ul>
 					</li>
 					<li>
-						
+						On the hardware side, they have three kinds of models:
+						<ul>
+							<li>
+								Abstract: using abstract device models based functional simulators using parameters values
+							</li>
+							<li>
+								Emulated: emulate real storage device using DRAM chips and external DRAM disks
+							</li>
+							<li>
+								Flash Hardware prototype: FPGA based model that provides more accurate development framework for developing hardware models using real NAND flash chips.
+							</li>
+						</ul>
+					</li>
+					<li>
+						On the software side:
+						<ul>
+							<li>
+								support various hardware device models offered by hardware platform.
+							</li>
+							<li>
+								capable of handling IO requests from host system and deliver them to software through host-side interface.
+							</li>
+							<li>
+								Implemented in Linux OS using ANSI-C and hardware prototyping in Xilinx FPGA uisng Bluespec Systemverilog
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</p>
 		</div>
+		<hr>
+		<button type="button" class="collapsible"> <a name="optanecontract">Towards an Unwritten Contract of Intel Optane SSD</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://research.cs.wisc.edu/adsl/Publications/hotstorage-contract19.pdf"> this link</a>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+		<hr>
+	</div>
 
-		<hr>
-		<hr>
 	<script>
 		var coll = document.getElementsByClassName("collapsible");
 		var i;
