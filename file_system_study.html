@@ -1,0 +1,179 @@
+<p>
+	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+			<p>
+				Following is the list of paper studied about the SSDs.
+				<ul>
+					<li>
+						<a href="#ext4">The new ext4 filesystem: current status and future plans</a>
+					</li>
+					<li>
+						<a href="#matias1">From Open-Channel SSDs to Zoned Namespaces</a>
+					</li>
+					<li>
+						<a href="#zoned1">NVMe Zoned Namespaces</a>
+					</li>
+					<li>
+						<a href="#parallelfirmware1">Scalable Parallel Flash Firmware for Many-Core Architectures</a>
+					</li>
+					<li>
+						<a href="#flashsearch1">Read as Needed: Building WiSER, a Flash Optimized Search Engine</a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="ext41">Paper: <i>The new ext4 filesystem: current status and future plans</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							The original paper can be found at <a href="https://pdfs.semanticscholar.org/b8dd/ec47f9fab1eddb5c9cacf703781dd5337b87.pdf"> this link</a>
+						</li>
+					</ul>
+				</p>
+			</div>
+		
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="matias1">Presentation: <i>From Open-Channel SSDs to Zoned Namespace</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							This is a presentation that can be found at <a href="https://www.usenix.org/sites/default/files/conference/protected-files/nsdi19_slides_bjorling.pdf">this link</a>. It was presented by Matais Bjorling, Director Solid-State System Software of Western Digital at USENIX 2019.
+						</li>
+						<li>
+							Presents forward-looking statements regarding Solid State techs, product development efforts, software development etc
+						</li>
+						<li>
+							Open Channel SSD architectures:
+							<ul>
+								<li>
+									No FTL present but leaves the management of device to OS. Linux 4.4 kernel supports Open Channel using NVM Express specification.
+								</li>
+								<li>
+									Chunks: Zoned namespace
+								</li>
+								<li>
+									Parallel Groups: Endurance management groups.
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="zoned1">Website: <i>NVMe Zoned Namespaces</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<ul>
+							Let us First talk about zoned storage itself <a href="https://zonedstorage.io/introduction/zoned-storage/">(this link)</a>:
+							<li>
+								It is a class of storage devices that is divided into zones. Each zones have a write pointer that keeps track of position of next data to be written.
+							</li>
+							<li>
+								Data in a zone cannot be overwritten and must be erased first.
+							</li>
+							<li>
+								SSDs can also implement zoned interface to reduce write amplification, reduce the device DRAM needs and improve quaity of service at scale.
+							</li>
+							<li>
+								Support for zoned storage was added to Linux in version 4.10.0, and is based on Zoned Block Device abstraction. The interface associated with ZBD is an extension to traditional Linux block device interface.
+							</li>
+							<li>
+								Zoned storage is used in Shingled Magnetic Recording (SMR) which is different from Conventional Magnetic Recording (CMR) used in hard disk drives. SMR provides more areal density than CMR because SMR removes the gaps that are placed in CMR.
+							</li>
+							<li>
+								CMR places gaps in tracks of HDDs to account for Track MisRegistration (TMR) budget. This impacts the density negatively as the area is not fully utilized. SMR removes needs for gaps by writing tracks in overlapping manner, forming pattern similar to shingles on a roof.
+							</li>
+							<li>
+								While performing a write, the write head (which area bit wider than conventional ones) overlap part of another track thus leaving a narrower track band for reading.
+							</li>
+							<li>
+								The overlapping tracks are gouped into bands called zones of fized capacity for more effective data organization and partial update capacity.
+							</li>
+							<li>
+								Gaps are however present between zones to prevent overwrite between zones.
+							</li>
+							<li>
+								Because of the shingled organization, data has to be written sequentially. To overwrite, entire band or zone has to be re-written.
+							</li>
+						</ul>
+						<li>
+							The original content can be found at <a href="https://zonedstorage.io/introduction/zns/">this link</a>.
+						</li>
+						<li>
+							Zoned namespace divides the logical address space of a namespace into zones.
+						</li>
+						<li>
+							Each zones provides an LBA range that must be written sequentially and if written again must be explicitly reset.
+						</li>
+						<li>
+							It introduces a new type of NVMe drive that has several benefits over traditional NVMe SSDs.
+						</li>
+						<li>
+							ZNS is similar to HDDs Shingled Magnetic Recording zones that must be written sequentially and explicilty reset before rewritting.
+						</li>
+						<li>
+							The problem of log-on-log is solved naturally. Please read <a href="https://www.usenix.org/system/files/conference/inflow14/inflow14-yang.pdf">this paper</a> for log on log concept.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="parallelfirmware1">Paper: <i>Scalable Parallel Flash Firmware for Many-core Arch (read later)</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Published in FAST'20, the original link can be found at <a href="https://www.usenix.org/system/files/fast20-zhang_jie.pdf">this link</a>.
+						</li>
+						<li>
+							NVMe allows users to exploit all levels of parallelism, but current firmware design are not scalable and have difficult time in handling high IO requests in parallel
+						</li>
+						<li>
+							They propose DeepFlash that is manycore-based storage platform that can process more than a million IO requests in a seconds while hiding long latencies imposed by internal media.
+						</li>
+						<li>
+							Many to many threading model that can be scaled horizontally.
+						</li>
+						<li>
+							Implement prototype in many core processor that empolys dozens of light weight cores and perform parallel IO. Deepflash can serve around 4.5GB/s
+						</li>
+					</ul>
+					<ul>
+						Intro:
+						<li>
+							NVMe is designed to make use of parallelism at all levels of SSDs. NVMe provides 64K deep queues.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="flashsearch1">Paper: <i>Read as Needed: Building WiSER, a flash optimized search engine(read later)</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Published in FAST'20, the original link can be found at <a href="https://www.usenix.org/system/files/fast20-he.pdf">this link</a>.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
+
+
+			<hr>
+</p>

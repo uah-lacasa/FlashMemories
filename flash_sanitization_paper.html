@@ -1,0 +1,117 @@
+<p>
+	<button type="button" class="collapsible"> <i>List of sources</i></button>
+		<div >
+			<p>
+				<ul>
+					Following are the sources of the contents:
+					<li>
+						<a href="#proposal">From Proposal</a>
+					</li>
+					<li>
+						<a href="#stateofart">State of the Art</a>
+					</li>
+					<li>
+						<a href="#evanescoM">Evanesco: Motivation</a>
+					</li>
+					<li>
+						<a href="#evanescoP">Evanesco: Proposal</a>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<button type="button" class="collapsible"> <a name="proposal"></a><i>From Proposal</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the proposal that was submitted to NSF by Dr Biswajit Ray and Dr Aleksandar Milenkovic.
+					</p>
+					<p>
+						The major idea is that instant deletion of data from the memory has become extremely important to preserve privacy of the user. According to <a href="http://www.legislation.gov.uk/ukpga/2018/12/contents/enacted"> Data Protection Act (DPA) 2018</a>, the deletion of imformation should be real and should not be recoverable in any way. However, current trend in SSD's do not offer any permanent data deletion strategy.
+					</p>
+					<p>
+						NAND flash or flash memory in general follow the trend of erase before write paradigm, which means before any program operation erase has to be performed. But the granularity of erase (a block) is much larger than program (a page), thus for any modification of data is performed by copying the entire data, modifying it and writing it to a new location. The old data is simply marked as invalid or is unlinked where the original data content still remains. These pages are technically unreachable or unaddressable through the Flash Translation Layer (FTL).
+					</p>
+					<p>
+						For the page level deletion of data, Wei et al introduced the concept of "scrubbing", which means write 0s to all the flash memory location. This corresponds to essentially deletion of data from a page by program operation. Program operation is possible in page-level granularity, thus deletion from page is possible. However, the "scrubbing" technique does not properly delete the data. There has been experimental demonstration where the data is recovered from a "scrubbed" flash memory by analyzing the physical property of the scrubbed flash memory.
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"><a name="stateofart"></a> <i>State of the Art</i></button>
+				<div class="content">
+					<p>
+						The content here is still derived from the same proposal.
+					</p>
+					<p>
+						<ul>
+							<li>Block Erase: Erase the complete block. This means the charges trapped in the Floating Gate is removed. Garbage Collection of FTL uses this mechanism to remove the contents or free space when the drive is almost full. Poor performance because of significant data movement.</li><br>
+							<li>Logical Sanitization: To overcome the performance hit by block erase, logical sanitization is performed. This works by simply invalidating the data that are obsolete. The old data still remains in the memory.</li><br>
+							<li>Encryption Based Sanitization: Encrypt the user file and store the data and key in separate blocks. Remove the keys, thus securely invalidating the data.</li><br>
+							<li>Digital Sanitization (Scrubbing): Write 0s to the memory in page-level deletion strategy.</li><br>
+							<li>Analog Sanitization: Perform repeated partial erase operation until completely erased.</li>
+						</ul>
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="evanescoM"></a><i>Architectural Support for Sanitization: Introduction and Motivation</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the paper that can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/evanesco-secure-data-sanitization-for-flash-memory_asplos20.pdf">this link.</a>
+					</p>		
+					<p>
+						It is challenging to erase a file without large performance penalty or reliability issue in modern  NAND. Evanesco is a new technique for high-density 3D NAND flash memory. Evanseco, instead of physically destroying data, blocks access to the data. Two commands, pLock and bLock are designed that block access to the page and block respecively of the data deleted. These locked memories can only be accessed after erase operation, thus the claim is that a strong security is guaranteed. Erase or program based data deletion technique will rapidly reduce the quality of the flash memory.
+					</p>	
+					<p>
+						Performance analysis done on 160 3D TLC NAND memory on FlashBench with their proposal enabled flash model. Benchmarks are workloads collected from enterprise servers and mobile systems. 
+					</p>
+					<p>
+						In the new architecture, a read request to the locked location will always return all 0s.
+					</p>
+					<p>
+						FTL is the special embedded software that is employeed in flash-based storage system. FTL writes in append-only fashion which means new data is stored in a new physical page for performance reasons by avoiding longer block erases. Thus a logical to physical mapping table (L2P) is maintained. For updating a data, the updated data is written to a new free page, the link in LPA table is updated to new physical address, state of new physical page changed to valide from free and the old physical page's state is made invalid.
+					</p>
+					<p>
+						When the system is about to run out of the free pages, a Garbage Collector is invoked. This reclaims the free pages by erasing victim blocks (blocks with invalid pages). If there are valid pages in the victim blocks that are to be erased, these pages have to be copied elsewhere first, and remapped in the L2P. 
+					</p>
+					<p>
+						The trend of having a multple copies of a file while updating (or deleting) a file is called <i>data versioning problem</i> in this paper. Experiment to measure how many invalid versions of a file exist throughout the lifetime of a file is conducted. Tools used are: VerTrace, an extension of IOPro and FlashBench (they made all three of these tools). Essentially, the goal is to keep track of number of valid and invalid pages of a file at any time in the flash memory. Three benchmarks traces, Mobile, MailServer and DBServer are used. Maximum storage emulated is 16GiB. Ultimate goal of the evaluation is to find the number of invlaid versions of file that exists and for how long the invalid versions remain.
+					</p>
+					<p>
+						<ul>
+							Types of files:
+							<li>Uni-version: File when modified such that content of older version is a subset of new file ie file at time t is subset of file at time t+1.</li>
+							<li>Multi-version: Any file that is not Uni-version file.</li>
+						</ul>
+						<ul>
+							Quantities measured for each files are:
+							<li>Version Amplification Factor: Maximum of (for all time of observation (ratio of invalid pages to valid pages))</li>
+							<li>Total Insecure Interval: Time for which the number of invalid pages is greater than 0.</li>
+						</ul>
+						The observation show that files have a large number of invalid pages for a long time.
+					</p>
+					<p>
+						Existing technique destroy data by changing Vth of flash cell. Scrubbing technique increases Vth of all flash cell in WL so that Vth distrubutions of different states are mixed together such that original data identification is impossible. 
+					</p>
+					<p>
+						But this technique is not efficient in MLC or TLC NAND as there are multiple pages in  a single Wordline. Thus efficient reprogramming based sanitization technique is proposed for MLC NAND memory. This technique uses one-shot programming technique with lowered voltage such that content can be safely destroyed, and other pages in the same wordline is not impacted. Zero copy overhead is incurred as there is no copy operation needed. Sanitization of LSB and MSB can be independent. But there is always chance of overprogramming, so that the shift of Vth is too much.
+					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="evanescoP"></a><i>Architectural Support for Sanitization: Proposal</i></button>
+				<div class="content">
+					<p>
+						The content here is derived from the paper that can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/evanesco-secure-data-sanitization-for-flash-memory_asplos20.pdf">this link.</a>
+					</p>
+					<p>
+						The access to the page is controlled by access-permission (AP) flag. Two kinds of AP flags: pAP (for page) and bAP (for block) inside the flash chip that are controlled by two commands pLock and bLock respectively. Command pLock&ltppn&gt locks the physical page number ppn by setting the pAP flag to disable state. Similarly, bLock&ltpbn&gt blocks the access to the physical block number pbn by setting bAP flag to disabled state. No unlock commands are present and unlock is automatically done once the block is erased. Thus data is permanently inaccessible before erase cycle once locked. The logic is implemented into the flash chip itself.
+					</p>
+					<p>
+						<b>Page Level Sanitization:</b> For each page, along with the main area of data storage, some spare storage space for flags storage is available. The flags are stored in this location. For every access made to a page, the data copied to the cache or buffer is only sent to output if the flag value pAP is not disabled. Since in MLC and TLC, multiple flags are needed in each WL. For individual programming of these cells, self-boost program inhibit (SBPI) is used that allows flash cells in a single WL to be selectively programed by choosing different voltage settings for different BLs.
+					</p>
+					<p>
+						<b>Block Level Sanitization:</b> If a large number of pages are to be sanitized, PLock becomes non-trivial and incurs overhead. A single block sanitization can sanitize a large number of pages at once. This only works in 3D as the bAP flag is implemented in SSL (Source Select Line) of 3D NAND as 3D NAND use normal flash cell (that allows for SSL to act as WL) for SSL rather than transistor. 
+					</p>
+				</div>
+				<hr>
+</p>

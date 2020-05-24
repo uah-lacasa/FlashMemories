@@ -1,0 +1,380 @@
+<p>
+	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+		<p>
+			Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
+			<ul>
+				<li>
+					<a href="#prabhu1">Paper: <i>Extracting Device Fingerprints from Flash Memory by Exploiting Physical Variations</i></a>
+				</li>
+				<li>
+					<a href="#wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a>
+				</li>
+				<li>
+					<a href="#xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a>
+				</li>
+				<li>
+					<a href="#jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a>
+				</li>
+				<li>
+					<a href="#sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a>
+				</li>
+				<li>
+					<a href="#mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a>
+				</li>
+				<li>
+					<a href="#clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a>
+				</li>
+				<li>
+					<a href="#sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a>
+				</li>
+			</ul>
+		</p>
+		<hr>
+		<button type="button" class="collapsible"> <a name="prabhu1">Paper: <i>Extracting Device fingerprints from Flash Memory by Exploiting Physical Variations</i></a></button>
+			<div class="content">
+				<p>
+					This paper discusses seven techniques for generating fingerprints from flash memory. Published in 2011, the author P Prabhu was affiliated with UCSD while collaborators are from Cornell University. The original paper can be found at <a href="https://dl.acm.org/doi/10.5555/2022245.2022264">this link</a>. Their conclusion is the four of the seven techniques provide usable signatures.
+				</p>
+				<p>
+					The set up consists of Xilinx FPGA connected to the flash chip through a custom built flash controller. The measurements can be made with a resolution of 10ns.
+				</p>
+				<p>
+					<ul>
+						<li>
+							<p>
+								<b>Program Disturb</b>: It is possible for two bits in separate pages to electrically influence each other. Program operation in a page might induce an mild programming force in an unselected word line. For generation of signature, repeated program operation is performed in a page. After each program operation, the state of adjacent page is read out to record the number of program operations required to cause the flip in each bit of adjacent page. This operation is performed for all the bits in the adjacent page. The number of program operations performed is limited to 10000. For the bits that are not affected, the value of 0 is recorded.
+							</p>
+							<p>
+								The signature is page based and thus thousands of signatures can be extracted from a single flash memory. The time it takes is between 1-5 minutes.
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Read Disturb</b>: The idea behind read disturb is similar to Program Disturb. Since for read operation, a small current has to be suppled as read current, this current might influence adjacent flash page over a number of times.
+							</p>
+							<p>
+								The number of read operations in a flash page to influence adjacent flash page is limited to 10 million times while the state of adjacent flash page is read after every 1000 read iterations. Despite having good metrics for correlation (high for signature generated from a single page while almost 0 for those from different pages), it is too slow process. It almost took 6 hours to have useful signature for MLC chips.
+							</p>
+						</li>
+						<li>
+							<p>
+								<b>Program Operation Latency</b>:  This technique is based on per-bit variation in program latency.Program operation is performed one bit at a time and the latency is recorded such that a single bit contributes a single value to the fingerprint. There are two following variations of the technique as discussed below:
+							</p>
+							<p>
+								<ul>
+									<li>
+										<p>
+											<i>Single Page</i>: Following steps are followed for fingerprint generation:
+											<ul> 
+												<li>Erase the block.</li>
+												<li>Program each bit in a page within a block as follows:</li>
+												<ul>
+													<li>First program operation programs a single '0' followed by ones.</li>
+													<li>Second program operation programs two '0's followed by ones.</li>
+													<li>.. and so on.</li>
+												</ul>
+											</ul>
+										</p>
+									</li>
+									<li>
+										<p>
+											<i>Multi Page:</i>Following steps are followed for fingerprint generation:
+											<ul>
+												<li>Erase the block</li>
+												<li>Program just the nth bit in page n.</li>
+												<li>.. and so on.</li>
+											</ul>
+										</p>
+									</li>
+								</ul>
+							</p>
+						</li>
+						<li>
+							Other proposals that were deemed unuseful are as follows:
+							<ul>
+								<li>
+									<b>Erase Lantency</b>:
+									<p>
+										Measure the erase latency for each block in a device and use the resulting sequence of values to form a signature. Offered very little variation, and were inconsistent for individual blocks.
+									</p>
+								</li>
+								<li>
+									<b>Read Lantency</b>:
+									<p>
+										Per-page read latency varied very little. In SLC, read latency was constant over entire device.
+									</p>
+								</li>
+								<li>
+									<b>Whole Page program Latency</b>:
+									<p>
+										Whole page program latency offered very little vairation to offer good signature.
+									</p>
+								</li>					
+								<li>
+									<b>Program/Erase Wear</b>:
+									<p>
+										Measuring each bits susceptibility to error because of program/erase induced wear took several hours to extract signature thus making this method ineffective.
+									</p>
+								</li>		
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="wang1">Paper: <i>Flash Memory for Ubiquitous Hardware Security Functions: True Random Number Generation and Device Fingerprints</i></a></button>
+			<div class="content">
+				<p>
+					This paper demonstrates NAND flash memrory as a source of entropy for TRNG and PUF generation, and is work done by Wang et al at Cornell University. The idea is based on repeated partial program operation on the flash memory. The original paper can be found at <a href="https://ieeexplore.ieee.org/document/6234403">this link</a>.
+				</p>
+				<p>
+					For RNG, they make use of the Random Telegraphic Noise (RTN) as the source of randomness. RTN is the alternating capturing and emission of carriers at a defect site in a very small electronic device. This capturing and emission, that is random and exponentially distributed, generates discrete variation in the channel current.
+				</p>
+				<p>
+					To observe this noise, the flash memory needs to be in unreliable state so that noise effects the outputs. Thus partial program operation is used to achieve this state that is in-between erased and programmed state. The initial algorithm is described as follows:
+					<ol>
+						<li>The flash memory block is partially programmed. The duration of partial program applied is T (unspecified)</li>
+						<li>
+							The flash memory block is read N times.	
+						</li>
+						<li>
+							Then, for each of the bits, it is checked if there exists RTN.
+						</li>
+						<li>
+							If it does, the number of partial program operation it took is noted, and the bit position is marked as selected. 
+						</li>
+						<li>
+							This partial program operation is repeated until all the bits are marked selected. Go to step 1.
+						</li> 
+					</ol>  
+					The second part of the algorithm, then can be used to generate RNG.
+					<ol>
+						<li>Partial program the flash cell to appropriate levels (as dictated by the number of partial program operations from above) </li>
+						<li>Read each bit M times</li>
+						<li>Record the sequence of up-times and down-times. Since it is RTN, the duration of being up-times and down-times are randomly distibuted.</li>
+						<li>Produce Random bits from the up-times and down-times. If the time is odd, output 1 else output a 0.</li>
+						<li>Perform debiasing</li>
+					</ol>
+				</p>
+				<p>
+					For the device fingerprint, repeated partial program operation is utilized. Following describes the steps involved:
+					<ol>
+						<li>
+							initialize bitRank[i] = 0 for i = all bits in a page
+						</li>
+						<li>
+							Perform partial program operation of flash page (T < rated program time)
+						</li>
+						<li>
+							For all the bits in page:
+							<ul>
+								<li>
+									If the bit is programmed and bitRank[this bit] = 0, bitRank[this bit] = partial program number
+								</li>
+							</ul>
+						</li>
+						<li>
+							1Goto Step2 until 99% bits in the page are programmed
+						</li>
+					</ol>
+					This essentially records the order in which the flash bits attain programmed state from erased state in a flash page.
+				</p>
+			</div>	
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="xu1">Paper: <i>Understanding sources of variations in flash memory for physical unclonable functions</i></a></button>
+			<div class="content">
+				<p>
+					This paper characterizes the errors and source of errors in flash memory. The authors were affiliated with Cornell University at the time of publication. The original paper can be found at <a href="https://doi.org/10.1109/IMW.2014.6849385"> this link</a>.
+				</p>
+				<p>
+					<i><b>Since this is not focused about PUF but analyzing the nature of variations in flash, will populate later</b></i>
+				</p>
+			</div>
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="jia1">Paper: <i>Extracting Robust Keys from NAND Flash Physical Unclonable Functions</i></a></button>
+			<div class="content">
+				<p>
+					This paper presents three techniques for PUF-based key generator using NAND flash memory. The techniques are partial erase, partial programming and program disturbance. The primary author was a member of <i>Data Assurance and Communication Security Research Center, China</i>. The original paper can be found at <a href="https://doi.org/10.1007/978-3-319-23318-5_24">this link</a>.
+				</p>
+				<p>
+					This paper focuses on robust keys rather than just determinig keys from the flash memories. They find the cells in the flash memory whose output are the most reliable over the life time of the flash memory. The position of such flash cells is the helper data.
+				</p>
+				<p>
+					<b>Partial Erase</b> based operation is more or less similar to the idea proposed in Wang et al. paper presented <a href="#wang1">above</a>. However, since this proposal is based on partial erase opration, the number of (fixed duration) partial erase operation that it takes for each flash cell in a page is recorded and is the identity for that particular cell. In a way, it captures the order in which the cells attain erase state from a programmed state.
+				</p>
+				<p>
+					The total number of partial erase operation is limited however to PENum. For some cells that do not attain the partial erase state even after the max number of partial erase operation performed, they are assigned PENum+1.
+				</p>
+				<p>
+					<b>Partial Program</b> based operation is exactly same as partial erase based operation above. Here, the order in which the cells attain erased state is recorded as the number of (fixed duration) partial program operation required by each flash cells to attain programmed state is recorded. After a fixed number of partial program operations PPNum, the cells that are still not in programmed state are assigned PPNum+1
+				</p>
+				<p>
+					<b>Program Disturb</b> based PUF generation induces disturbance in adjacent flash page by performing repeated program operation in a page. Here, fixed number of program operation is performed and after each of the program operation, the state of adjacent page is recorded to see if any cells might have been programmed enough to change their state to programmed state. Following the same suit, here again the number of program operations in the flash page is recorded for each of the flash cells in adjacent page it is needed to flip their state.
+				</p>
+				<p>
+					<b>For reliable cell selection</b>, they employ two methods as follows:
+					<ul>
+						<li>
+							<i>Bit Map Method:</i>
+							<ul>
+								<li>
+									First the raw PUF values for a certain address location is noted. These address location is genrally adjacent locations and the raw PUF values are obtained from any of the three methods above.
+								</li>
+								<li>
+									Between the adjacent values listed above, a difference is computed and absolute of this value is computed as ADvalues.
+								</li>
+								<li>
+									Based on the need, the top n-values from among all the ADvalues are taken. As helper data, the selected pair is assigned 1 and rest unselected pair are assigned 0.
+								</li>
+								<li>
+									For the final key, the two values used to compute the ADvalues is again checked. For each ADvalues, if the former of the two values is greater, then key at that position is 1 otherwise it is assigned 0. Using 6-flash cells, we get 3-bit key.
+								</li>
+							</ul>
+						</li>
+						<li>
+							<i>Position Map Method:</i>
+							<ul>
+								<li>
+									Here instead of selecting the adjacent flash cells, the flash values are first sorted from small to large based on raw PUF values.
+								</li>
+								<li>
+									The lowest three values from among the selected raw PUFs are grouped with the highest three values, ie lowest with highest, lowest-second with highest-second and so on.
+								</li>
+								<li>
+									The cell position of each of the raw PUF values are brought in pair. This is the helper data.
+								</li>
+								<li>
+									For each pair, if the former raw PUF is higher than latter, key generated is 1 while 0 otherwise. Using 6 positions, we get 3-bit key.
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="sanu1">Presentation: <i>Energy Efficient Circuits for Entropy Generation and Secure Encryption</i></a></button>
+			<div class="content">
+				<p>
+					This is not a paper but a tutorial session presented by Sanu Matthew. Matthew was with Circuit Research Labs, Intel @ Hillsboro, Oregon while this presentation was made in ISQED 2020.
+				</p>
+				<p>
+					This is not NAND based, but 14nm CMOS based, and is presented here because of the idea it has. The publication for this can be found at <a href="https://doi.org/10.1109/VLSIC.2018.8502369">this link</a>.
+				</p>
+				<p>
+					The idea presented can be divided into two major categories:
+					<ul>
+						<li>
+							First: There is noise in devices, so suppress the noises. There is process variation in devices, so amplify variation to create a physical identity of a device. Extract <i>static entropy</i>, ie entropy that remains same throughout the lifetime.
+						</li>
+						<li>
+							Second: There is process variation in devices, so suppress the process variation. There is noise in devices, so amplify the noise for randomness or entropy generation. Extract <i>dynamic entropy</i>, ie entropy that is changes.
+						</li>
+					</ul>
+				</p>
+				<p>
+					The idea for PUF generation or TRNG genration presented is to select the candidate bit for either operation. So, a selection criteria is selected, for example: read the bits multiple times (64 times as presented), and pick the ones with higher bias (either towards 0 or 1 state, determined using entropy computation) for PUF generation. Time varying bits can be used for TRNG purpose. This is based on the idea that the bits are time-variant, thus Temporal Majority Voting (TMV) is used. This idea can be easily ported in case of flash memories combined with the idea of flash cells oscillating. Please refer to <a href="https://ieeexplore.ieee.org/document/8443106">this paper</a>.
+				</p>
+				<p>
+					The idea of self-calibration is presented whereupon entropy is tracked for TRNG. If the output of von-Neumann extractor for TRNG is less than 1bit/cycle, then a different column is chosen for TRNG. (the entropy source bits are arranged in 64x8 organization of rows and columns)
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="mandadi1">Thesis: <i>Remote Integrity Checking using Multiple PUF based Component Identifiers</i></a></button>
+			<div class="content">
+				<p>
+					This document presents PUF generation for NOR flash memory. The author was associated with Virginia Tech and the document is the master's thesis of author. The original document can be found at <a href="https://vtechworks.lib.vt.edu/handle/10919/78200"> this link</a>.
+				</p>
+				<p>
+					The platforms used for demonstration of their idea is Altera DE1-SoC and Altera DE2-115.				
+				</p>
+				<p>
+					The basic idea used in this project is partial programming. The threshold volatge variation is utilized to generate PUF. Here, the address of the flash memory location is the challenge and the response is the bit position of the cell with minimum threshold voltage. Essentially, the idea is to find the flash cell that gets programmed first while applying repeated partial programming operations on a flash memory location.
+				</p>
+				<p>
+					<ol>
+						Following are the steps involved:
+						<li>A partial programming time T is chosen for a flash location.</li>
+						<li>The flash location is erased.</li>
+						<li>Program the flash location for duration T</li>
+						<li>Read the value of the flash location</li>
+						<ul>
+							<li>If any one bit are flipped, the location of the flipped bit is encoded into 3-bit form</li>
+							<li>If nore than one bit is flipped, T is reduced and go to Step 3</li>
+							<li>Else, go to Step 3.</li>
+						</ul>
+					</ol>
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="clark1">Paper: <i>Reliable techniques for integrated circuit identification and true random number generation using 1.5-transistor flash memory</i></a></button>
+			<div class="content">
+				<p>
+					This document presents PUF generation and TRNG for Superflash NOR  memory. The author was associated with Arizona State University. The original document can be found at <a href="https://doi.org/10.1016/j.vlsi.2017.10.001"> this link</a>.
+				</p>
+				<p>
+					The main idea exploited in this paper is the erase speed variability for the flash cells. The memory used in this research is 1.5T SST Superflash memory that has faster erase because split-gate flash memory has different organzation than stacked gate flash memory.
+				</p>
+				<p>
+					Since such memory are higly efficient, program operation takes only one clock while erase requires multiple cycles. Thus in this research, they employ partial erase operation by interrupting erase operation. Erase operation, however, is yet very fast to be interrupted at nominal operating condition, thus the operating voltage VDD is reduced to lower the internal charge pump voltage. 
+				</p>
+				<p>
+					Interrupting erase operation shows that the number of flash cells that attain erased state increases monotonically with higher erase times. They pick up a time that gives a little more than 50% 1's (flash cells in erased state). The distribution at this point in time shows that the flash cells in each of 1 and 0 state are almost randomly distributed over the block.
+				</p>
+				<p>
+					For authentication, the same operation is repeated but such that it yields less than 50% 1's. The idea is again based on monotonicity: this means that if a binary signature with (for example) 45% 1s is compared with (challenge code) 55% 1s signature, the bits that are 1 in 45% signature should already be at 1 in 55% signature.
+				</p>
+			</div>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a></button>
+		<div class="content">
+			<p>
+				This paper demonstrates a technique for generation of PUF from NAND flash memory such that the PUF is aging-resistant by introducing tunable-parameters. Authors of this papers were associated with The University of Alabama in Huntsville while it was published. The original paper can be found at <a href="https://ieeexplore.ieee.org/document/8993414">this link</a>.
+			</p>
+			<p>
+				The basic idea behind the PUF generation in this article is program disturb. However, this program disturb method differs from previous proposals in the sense that here a single flash memory page is stressed and analyzed (unlike previous implementations where disturbance in adjacent page were observed).
+			</p>
+			<p>
+				Following are the steps involved for PUF generation:
+				<ul>
+					<li>Erase a flash block.</li>
+					<li>In the page of interest, program with all-ones data pattern except the last 32 bits which are programmed to zeros.</li>
+					<li>Perform repeated program operation in the same page with the same data pattern.</li>
+					<li>This repeated program operation (albeit with 1s) should cause the some flash cells to be weakly programmed.</li>
+					<li>Thus, after certain number of program operation, some of the flash cells will start to read as 0 despite being programmed with 1.</li>
+					<li>The idea is again based on the sequence in which bits attain the programmed state. Here, after application of certain number of program operation, the state of flash cells is recorded as the signature of the page. The number of program operation is chosen such that sufficient number of flash cells have attained programmed or 0 state.</li>
+					<li>Repeating the same operation on the same page of flash memory should yield the same signature except for a few unstable bits.</li>
+				</ul>
+			</p>
+			<p>
+				These unstable bits are filtered out to generate more accurate PUF. For this, a plot with the progression of flash page from complete erased to programed state at different stress-levels (number of program operations) is plotted. Based on observation from this plot, two different threshold stress-levels are identified: one at the early stages to identify stable 0 cells (PS0) and second at the late stage to identify stable 1 cells (PS1). This gives the idea about the flash cells that attain the programmed state quickly (stable 0 cells) and cells that resist the change and maintain their state for longest (stable 1s).
+			</p>
+			<p>
+				To generate the PUF of n-bits, at least n/2 stable 0s are generated and rest are stable 1s are obtained, thus removing the unstable flash cells that change their state in between the two thresholds discussed above.
+			</p>
+			<p>
+				To obtain at least n/2 stable 0s, PS0 program operations as discussed above are performed. This will flip at least n/2 bits to 0 and gives information about the early flippers or stable 0s. Next, the page is stressed for PS1 program operations, and ensure that there are only n/2 erased bits left. These are stable 1s. The complete sequence (entire page) is compared at states PS0 and PS1 applied. If the states of the flash cells are same, they contribute to the PUF, else they are unstable bits.
+			</p>
+			<p>
+				For authentication, the number of stresses to be performed is between the PS0 and PS1 (PS0&ltPSU&ltPS1).
+			</p>
+			<p>
+				With usage or aging, the rate of bits that flip from erased to program state with program disturb decreases and might present issue for PUF. To counter this, PSU is adapted with the usage rate that page has endured.
+			</p>
+			<p>
+				PSUnew = PSU+k*npe, where
+				<ul>
+					<li>k is constant derived from characterization</li>
+					<li>npe is the number of program-erase the page has endured</li>
+					<li>PSU is the number of program operation required to generate PUF in fresh consition</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+</p>

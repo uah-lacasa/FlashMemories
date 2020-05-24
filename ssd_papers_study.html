@@ -1,0 +1,64 @@
+<p>
+	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
+			<p>
+				Following is the list of paper studied about the SSDs.
+				<ul>
+					<li>
+						<a href="#maneas1">A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+
+		<button type="button" class="collapsible"> <a name="maneas1">Paper: <i>A Study of SSD Reliability in Large Scale Enterprise Storage Deployments</i></a></button>
+			<div class="content">
+				<p>
+					<li>
+						The original paper can be found at <a href="https://www.usenix.org/system/files/fast20-maneas.pdf">this link</a>. This paper was presented in USENIX FAST2020 and was awarded best paper.
+					</li>
+					<li>
+						Large scale study focused on enterprise storage systems, study conducted on 1.4 million SSDs of NetApp which is a major storage vendor.
+					</li>
+					<li>
+						Netapp storage system employ WAFL file systems and DATA ONTAP operating system which uses software RAID to provide resiliency against drive failures.
+					</li>
+					<li>
+						Data over the nw is serviced using file-based protocols as NFS and CIFS/SMB or block-based protocols such as iSCSI
+					</li>
+					<li>
+						Netapp systems in field send weekly NetApp Active IQ bundles that track a  very large set of system and device parameters. This study is based in mining this collection of NetApp Active IQ messages.
+					</li>
+					<li>
+						Different types of failures are categorized. The most severe of them that prompts replacement of drives was SCSI error. These error are due to ECC errors. Majority of other errors were recovered by RAID reconstruction.
+					</li>
+					<li>
+						Replacement rate: number of device failures divided by number of device years.
+					</li>
+					<li>
+						For the causes of errors or the factors impacting replacement rates:
+						<ul>
+							<li>
+								Usage and Age: A increasing failure rates of long period 12-15 months in the beginning, and 6-12 months of decreasing failure rates before finally stabilizing for 3D-TLC and eMLC (enterprise MLC) drives.
+							</li>
+							<li>
+								3D-TLC failure rates is higher than other types, thus the replacement reateis higher. Also 3d-TLC uses 10-15X times more for spare blocks
+							</li>
+							<li>
+								Higher capacity drives have higher replacement rates and more severe failures too (unresponsive drives).
+							</li>
+							<li>
+								High density drives have higher replacment rates.
+							</li>
+							<li>
+								EMphasize importance of firmware updates
+							</li>
+							<li>
+								Most of the systems make use of only 15% of rated life of device, thus there should be no concern to updatd to QLC.
+							</li>
+						</ul>
+					</li>
+				</p>
+			</div>
+
+			<hr>
+</p>

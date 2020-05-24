@@ -1,0 +1,182 @@
+<p>
+	<button type="button" class="collapsible"><a href="#otherstudy"></a> <i>List of Papers Studied </i></button>
+		<div>
+			<p>
+				Following are the papers studied:
+				<ul>
+					<li>
+						<a href="#iopro">Improving File System Performance of Mobile Storage Systems Using a Decoupled Defragmenter</a>
+					</li>
+					<li>
+						<a href="#flashbench">FlashBench: A workbench for a rapid development of flash-based storage devices</a>
+					</li>
+				</ul>
+			</p>	
+		</div>
+		<hr>
+		<button type="button" class="collapsible"> <a name="iopro">Improving File System Performance of Mobile Storage Systems Using a Decoupled Defragmenter</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://www.usenix.org/system/files/conference/atc17/atc17-hahn.pdf"> this link</a>
+					</li>
+					<li>
+						Investigate file fragment problem in mobile flash storage
+					</li>
+					<li>
+						Observation based on real android smartphones:
+						<ul>
+							<li>
+								Defragmentation is essential because fragmentation is recurring problem
+							</li>
+							<li>
+								Fragmentation in flash affects differently than in HDDs. In flash, the logical and physical fragmentation is decoupled and the degradation in perf comes mostly from logical fragmentation.
+							</li>
+							<li>
+								They propose two defragger tools: janusdL for logical and janusdP for physical
+							</li>
+							<li>
+								the combined tool is janusd, that has similar performance to e4defrag without effecting flash lifetime.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Introduction:
+						<ul>
+							<li>
+								When a file system is fragmented, it has to allocate multiple storage areas. In HDDs this causes longer seek times thus periodic defragmentation is recommended. But in flash, it is not recommended. This is because seek operation is not required in flash memories and thus fragmentation negligibly affect performance. Frequent deframentation might lead to effect in lifetime. This paper performs a systematic study of these things.
+							</li>
+							<li>
+								Two questions in this paper: 1. How does defragmentation affect the performance? 2. How long does defragmentation last?
+							</li>
+							<li>
+								They show that defragmentation improves the performance like app launching time by upto 52%.
+							</li>
+							<li>
+								File fragmentation recurs after a week or so even after full file defragmentation. Since the apps update quickly, defragmentation disappears qiuckly.
+							</li>
+							<li>
+								Regular defragger like e4defrag is not good for frequent defragmentation because it affects the lifetime of flash memory. Invoking each week may lead to reduction of life by 10% or more.
+							</li>
+							<li>
+								Flash memories in mobiles have dcoupled fragmentation because the performance of physical IO is dependent upon the avaiilable of IO rathar than upon logical fragmentation. Regardless of how much the file is fragmented in logical layer, the device IO performance at the physical layer is unaffected. HOwever, the logically fragmented files significantly increase processing times in block IO layer and device driver because of large number of block IO requests.
+							</li>
+							<li>
+								Thus defragmentation of logical space effictevly is needed.
+							</li>
+							<li>
+								And, an independent physical defragger is needed as well because logical defragger would not be able to identify physical fragmented file.
+							</li>
+							<li>
+								validated on emulated mobile flash storage: simeMMC and simUFS.
+							</li>
+						</ul>
+					</li>
+					<li>
+						File Fragmentation Study
+						<ul>
+							<li>
+								Based on 14 used android smartphones from 5 different manufacturers with 6 months use
+							</li>
+							<li>
+								Fragmentation Metric is degree of fragmentation which they define as ratio of number of extent allocated to the file x by the number of extent required by the file. (in ext4 file format, each extent is 128 MB which is a chunk of memory unit allocated). The higher the number of extents, the higher is fragmentation.
+							</li>
+							<li>
+								FIle fragmentation is a recurring problem especially when file system utilization is high.
+							</li>
+							<li>
+								App launching time was longer with time and it is also when the file utlization waas high. App launching time is time when the icon is pressed to the time when the app is loaded fully.
+							</li>
+							<li>
+								But if defragmentation is performed, large number of file are copied here and there, thus impacting the life of the flash.
+							</li>
+							<li>
+								To understand how logical fragmentation affects overhead in system software stack, they built IOPro that can profile complete Android stack from app level to device driver level. Time spent at different layers in the stack can be measured using IOPro.
+							</li>
+							<li>
+								For this research they measured time spent in Ext4 file system, page cache, block layer, the device driver and mobile flash storage.
+							</li>
+							<li>
+								Observation: Time spent in   block layer, device driver layer, the flash storage layer increases with DOFlogical. Whle time spent in file system layer and page cahce layer are barely affected.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Design and Implementation of Defragmentation Tool:
+						<ul>
+							<li>
+								<i>study later</i>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+		<button type="button" class="collapsible"> <a name="flashbench">FlashBench: A workbench for a rapid development of flash-based storage devices</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://ieeexplore.ieee.org/document/6380706"> this link</a>
+					</li>
+					<li>
+						Performance of NAND decreases with scaling, thus to counter the demerits, a cross-layer system level approach that employs system level approach is emerging as a promising solution. eg Data Compression and high speed accelerator etc considering the endurance is dependent upon the amount of data written to flash.
+					</li>
+					<li>
+						To make use of changes in hardware, the software modules shold also be redesigned eg. address mapping, garbage collection etc.
+					</li>
+					<li>
+						Data deduplication can be used to reduce the amount of data written to flash.
+					</li>
+					<li>
+						Cross system layer solution is good in handling the challenges of newer NAND memory but it increases the complexity and cost of design.
+					</li>
+					<li>
+						In this paper, they present a flash storage development environment called FlashBench
+						<ul>							
+							<li>
+								Flashbench provides multiple design environments at different design levels	
+							</li>
+							<li>
+								Flashbench enables rapid development and validation of tightly coupled sw/hw modules by providing high level sw/hw dev platform
+							</li>
+							<li>
+								FLashbench helps to implement flexible and portable software modules.
+							</li>
+						</ul>
+					</li>
+					<li>
+						On the hardware side, they have three kinds of models:
+						<ul>
+							<li>
+								Abstract: using abstract device models based functional simulators using parameters values
+							</li>
+							<li>
+								Emulated: emulate real storage device using DRAM chips and external DRAM disks
+							</li>
+							<li>
+								Flash Hardware prototype: FPGA based model that provides more accurate development framework for developing hardware models using real NAND flash chips.
+							</li>
+						</ul>
+					</li>
+					<li>
+						On the software side:
+						<ul>
+							<li>
+								support various hardware device models offered by hardware platform.
+							</li>
+							<li>
+								capable of handling IO requests from host system and deliver them to software through host-side interface.
+							</li>
+							<li>
+								Implemented in Linux OS using ANSI-C and hardware prototyping in Xilinx FPGA uisng Bluespec Systemverilog
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+</p>
