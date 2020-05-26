@@ -38,3 +38,4 @@
 				'file_system_study.html',
 				'other_study.html'
 			]
+Alternate link for project is found at https://sickranchez-c137.github.io/Flash-Memory-Research/
