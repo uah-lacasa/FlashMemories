@@ -1,3 +1,221 @@
 <p>
-	
+	<button type="button" class="collapsible"><i>List of Papers Studied </i></button>
+		<div>
+			<p>
+				Following are the papers studied:
+				<ul>
+					<li>
+						<a href="#flashbasics">Basics of Flash Memory</a>
+					</li>
+					<li>
+						<a href="#flashtypes">Types of Flash Memory</a>
+					</li>
+					<li>
+						<a href="#3dflash">Architectural and Integration Options for 3D NAND Flash Memories</a>
+					</li>
+					<li>
+						<a href="#heatwatch3dnand">HeatWatch: Improving 3D NAND Flash Memory Device Reliability by Exploiting Self-Recovery and Temperature Awareness</a>
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+
+	<button type="button" class="collapsible"> <a name="3dflash">Architectural and Integration Options for 3D NAND Flash Memories</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://www.mdpi.com/2073-431X/6/3/27">this link</a>
+					</li>
+					<li>
+						Different issues are faced upon by the feature size shrinking of flash memory.
+					</li>
+					<li>
+						Intrinsic phenomena like random doping fluctuations, random telegraphic noise and the electron injection statistics significantly reduce the margin between the threshold voltage distributions.
+					</li>
+					<li>
+						Multi bits per cell has made things worse reducing reliability and lifetime.
+					</li>
+					<li>
+						3D NAND flash has provided with a way to overcome all the limitations of planar flash memory.
+					</li>
+					<li>
+						Most of the 3D NAND rely on charge trap flash architecture while some rely on FG architecture.
+					</li>
+					<li>
+						In this paper, they discuss about the charge trap flash memory and 3D NAND architectures based on the CT process.
+					</li>
+					<li>
+						Following are two of the topological classification of different integration solutions:
+						<ul>
+							<li>
+								<b>Control Gate and Channel along the horizontal direction</b>: This includes 3D Stacked option which is the preliminary attempt to achieve 3D integration starting from planar technology.
+							</li>
+							<li>
+								<b>Control Gate along the horizontal direction and channel along the vertical direction</b>: This includes the architectures like BiCS, P-BiCS, and the V-NAND architecture from Samsung including VRAT, VSAT and TCAT.
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ol>
+					<li>
+						3D Stacked Architecture:
+						<ul>
+							<li>
+								first idea and straightforward idea that stacking multiple planar layers of memory arrays would yield 3D layer.
+							</li>
+							<img src="images/flash_1.PNG" align="center">
+							<li>
+								As shown in image above.
+							</li>
+							<li>
+								Here, drain and bitline contacts are shared between NAND strings belonging to different layers, while source/wordlines contacts and source/drain selectors are associated to separate layers.
+							</li>
+							<li>
+								Cost and process technologies considerations of this architecture can be derived from those of the planar products
+							</li>
+							<li>
+								the major hurdle is represented by the thermal budget of the manufacturing process to grow and populate additional layers
+							</li>
+							<li>
+								here each layer is manufactured separately and this the architecture is flexible.
+							</li>
+							<li>
+								Since the layers are fabricated independently, there is a significant difference in the threshold voltage distribution with ISPP programming.
+							</li>
+						</ul>
+					</li>
+					<hr>
+					<li>
+						BiCS Architecture:
+						<ul>
+							<li>
+								Control Gates are the different rectangles stacked on top of each other.
+							</li>
+							<img src="images/flash_2.PNG" align="center">
+							<li>
+								The bottom rectangle plate is the ensemble of Source Line Selectors terminating flash string.
+							</li>
+							<li>
+								Multiple holes are drilled through the stacks and filled with poly-silicon in order to form a series of vertically arranged NAND flash memory cells.
+							</li>
+							<li>
+								Bitline Selectors (BLS) and Bitlines (BL) contacts are on top of the structure
+							</li>
+							<li>
+								Each cell in the BiCS architecture works in depletion-mode since the poly-silicon constituting the body of the transistor is lightly n-doped with a uniform profile or even left un-doped. This reduces the manufacturing complexity of the p-n junction along the vertical direction of the plugs (also called pillars)
+							</li>
+							<li>
+								The CG plate intersection with a pillar maps a single memory cell. Each NAND Flash string of cells is connected to a BL contact via BLS, whereas the bottom of the string is connected to a common source diffusion formed directly on the process substrate made of silicon.
+							</li>
+							<img src="images/flash_3.PNG">
+							<li>
+								
+							</li>
+						</ul>
+					</li>
+				</ol>
+			</p>
+		</div>
+		<hr>
+
+	<button type="button" class="collapsible"> <a name="heatwatch3dnand">HeatWatch: Improving 3D NAND Flash Memory Device Reliability by Exploiting Self-Recovery and Temperature Awareness</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The original paper can be found at <a href="https://www.cs.cmu.edu/~yixinluo/index_files/heatwatch_hpca18.pdf">this link</a>
+					</li>
+					<li>
+						Damages in 3D NAND can be partially recovered by a process called "self-recovery"
+					</li>
+					<li>
+						Self recovery has been studied for 2D NAND before to improve lifetime. Proposal also included to increase temperature to accelerate self recovery
+					</li>
+					<li>
+						Heatwatch proposed to improve 3D NAND relability. Key idea is to optimize the read reference voltage (adapting it to the dwell time of workload and the current operating temperature).
+					</li>
+					<li>
+						Heatwatch:
+						<ul>
+							<li>
+								efficiently tracks flash memory temperature and dwell time online
+							</li>
+							<li>
+								sends this information to our reliability model to predict the current voltages of flash cells
+							</li>
+							<li>
+								predict the current voltages based on the current cell voltages
+							</li>
+						</ul>
+					</li>
+					<li>
+						Improves lifetime by 3.85X over the baseline that uses fixed reference voltage
+					</li>
+					<li>
+						Limited lifetime of NAND is because of wearout in flash cells by repeated programming and erase operations. After each PE cycle, the threshold voltage is affected because of the inadvertant trap of electrons in flash cell.
+					</li>
+					<li>
+						Some of these trapped electrons gradually escape during the idle time between the consecutive PE cycle. This time is called "dwell time"
+					</li>
+					<li>
+						This escape or detrapping is called self-recovery. 
+					</li>
+					<li>
+						This can be accelerated by high temperature to the flash cell during the dwell time in 2D FG transistors.
+					</li>
+					<li>
+						But 3D NAND uses CT flash
+					</li>
+					<li>
+						Two effects shown in flash memory is studied in this paper:
+						<ul>
+							<li>
+								Retention Loss: Leakage of charge carriers from the flash cell that contains valid data, that can induce errors
+							</li>
+							<li>
+								Program Variation: Random variation that can cause cell to be set to an incorrect voltage while programming
+							</li>
+						</ul>
+					</li>
+					<li>
+						Some of the findings made are as follows:
+						<ul>
+							<li>
+								increase in dwell time from 1 to 137 min slows retention loss by 40%
+							</li>
+							<li>
+								lowering temp from 70 to 0 C slows retention loss by 58%
+							</li>
+							<li>
+								increasing temperature from 0 to 70 C during programming increases program variation by 21%
+							</li>
+							<li>
+								effectiveness of self-recovery is correlated with dwell time experienced during the most recent 20 PE cycles
+							</li>
+						</ul>
+					</li>
+					<li>
+						<img src="images/flash_4.PNG" align="center">
+					</li>
+					<li>
+						Errors in 3D NAND is dominated by retention errors. Thus, reducing retention errors by performing recovery cycles can increase lifetime. Recovery cycle means PE operation where program operatin is followed by an extended dwell time.
+					</li>
+					<li>
+						High temp increases electrom mobility. Thus short retention time in high temperature has same retention loss as long retention time at room temp.
+					</li>
+					<li>
+						And short dwell time at high temp as same self recovery effect as long dwell time at room temp.
+					</li>
+					<li>
+						<b>They refer to other papers [8,12,24] for technique to find the threshld voltage values. </b>
+					</li>
+					<li>
+						Read retry and the above technique is used to detect threshold voltage and fine tune it.
+					</li>
+				</ul>
+			</p>
+		</div>
+	<hr>
 </p>

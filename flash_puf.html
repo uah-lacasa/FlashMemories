@@ -27,6 +27,9 @@
 				<li>
 					<a href="#sakib1">Paper: <i>An Aging-Resistant NAND Flash Memory Physical Unclonable Function</i></a>
 				</li>
+				<li>
+					<a href="#erasesuspend1">Paper: <i>Extraction of Device Fingerprints using Built-In Erase-Suspend Operation of Flash Memory Devices</i></a>
+				</li>
 			</ul>
 		</p>
 		<hr>
@@ -377,4 +380,44 @@
 			</p>
 		</div>
 		<hr>
+
+		<button type="button" class="collapsible"> <a name="erasesuspend1">Paper: <i>Extraction of Device Fingerprints using Built-In Erase-Suspend Operation of Flash Memory Devices</i></a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The origianl paper can be found at <a href="https://ieeexplore.ieee.org/document/9097209">this link</a>.
+					</li>
+					<li>
+						Utilize erase suspend operation in flash memory. They use Superflash from microchip, but most of their explanation follows from FG NAND flash memory.
+					</li>
+					<li>
+						They generate 16-bit random number in 1ms
+					</li>
+					<li>
+						They perform gradiant analysis of erase operation and since the gradiant is more stable at the later part, erase suspend at that area is more suitable for device fingerprint extraction.
+					</li>
+					<li>
+						For fingerprint:
+						<ul>
+							<li>
+								erase sector
+							</li>
+							<li>
+								program the sector
+							</li>
+							<li>
+								suspend the erase operation
+							</li>
+							<li>
+								note the positions not erased. their fingerprint is the unerased bit position
+							</li>
+							<li>
+								the process is repeated until the required number of bits are reached (lenght of fingerprint)
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</p>
+		</div>
 </p>

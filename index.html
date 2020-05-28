@@ -237,10 +237,87 @@
 				Following are the papers studied:
 				<ul>
 					<li>
+						<a href="#3dxpwiki">3D X Point From Wikipedia</a>
+					</li>
+					<li>
+						<a href="#optaneperformance">Platform Storage Performance With 3D XPoint Technology</a>
+					</li>
+					<li>
+						<a href="#optaneevolution">Early Evaluation of Intel Optane Non-VolatileMemory with HPC I/O Workloads</a>
+					</li>
+					<li>
 						<a href="#optanecontract">Towards an Unwritten Contract of Intel Optane SSD</a>
 					</li>
 				</ul>
 			</p>	
+		</div>
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="3dxpwiki">3D X Point From Wikipedia</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://en.wikipedia.org/wiki/3D_XPoint">this link</a>
+					</li>
+					<li>
+						NVM technology developed by Intel and Micron. Available under name Optane by Intel and Quantx by Micron.
+					</li>
+					<li>
+						Bit storage is based on change of bulk resistance. But differs from other PCMs in that it uses chalcogenide materials for both selector and storage parts. (3DXPoint is thought to be a subset of ReRAM also)
+					</li>
+					<li>
+						Full technical detail is not revealed by Intel or Micron. But it has been stated to use electrical resistance and is not based on electrons (like flash etc)
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="optaneperformance">Platform Storage Performance With 3D XPoint Technology</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://ieeexplore.ieee.org/document/8003284">this link</a>
+					</li>
+					<li>
+						This paper reviews the potentialities on computing introduced by the 3-D XPoint technology in changing the memory-storage hierarchy.
+					</li>
+					<li>
+						Work on 3DXPoint started in 2008.
+					</li>
+					<li>
+						Three use cases of 3D X Point:
+						<ul>
+							<li>
+								Storage: disk operation
+							</li>
+							<li>
+								DRAM extension:
+							</li>
+							<li>
+								Persistant Memory:
+							</li>
+						</ul>
+					</li>
+					<li>
+						read later
+					</li>
+				</ul>
+			</p>
+		</div>
+		<hr>
+
+		<button type="button" class="collapsible"> <a name="optaneevolution">Early Evaluation of Intel Optane Non-VolatileMemory with HPC I/O Workloads</a></button>
+		<div class="content">
+			<p>
+				<ul>
+					<li>
+						The file can be found at <a href="https://arxiv.org/pdf/1708.02199.pdf">this link</a>
+					</li>
+				</ul>
+			</p>
 		</div>
 		<hr>
 
@@ -252,9 +329,180 @@
 						The file can be found at <a href="https://research.cs.wisc.edu/adsl/Publications/hotstorage-contract19.pdf"> this link</a>
 					</li>
 					<li>
-						
+						This paper describes Optane as well as formalized an unwritten contract of the Optane SSD violating which will result in 11x worse read latency and limited throughput.
+					</li>
+					<li>
+						Optane is Intel's 3D X Point memory with Micron.
+					</li>
+					<li>
+						It is available in various form factors including as a caching layer between the DRAM and block-device (as Optane memory), as a block device itself (as Optane SSD) and Optane DC Persistent Memory.
+					</li>
+					<li>
+						Of all the above, Optane SSD is the most cost effective and widely available option.
+					</li>
+					<li>
+						Following are the six (seven) rules for immediate performance of Optane SSD:
+						<ol>
+							<li>
+								Uses should issue small requests for low latency (>=4KB) and keep a small number of outstanding IOs (Access with Low Request Scale rune)
+							</li>
+							<li>
+								Optane SSD should not consider sequential workloads unlike HDD/Flash SSDs. (Random Access is OK)
+							</li>
+							<li>
+								Avoid parallel access to a single chunk to avoid contention among requests (Avoid Crowded Access rule)
+							</li>
+							<li>
+								Control the overall load of both reads and writes to control for optimal latency.
+							</li>
+							<li>
+								Never issue request for less than 4KB to exploit bandwidth of Optane SSD
+							</li>
+							<li>
+								Requests issued to Optane SSD should align to eight sectors for best latency.
+							</li>
+							<li>
+								When serving sustained workloads, there is no cost of garbage collection in Optane SSD. (Forget garbage collection)
+							</li>
+						</ol>
 					</li>
 				</ul>
+				<ol>
+					<li>
+						Access with Low Request Scale:
+						<ul>
+							<li>
+								Optane claimed to be upto 1000x faster than SSDs. But is it?
+							</li>
+							<li>
+								Optane SSD users should issue small requests and maintain small number of outstanding IOs.
+							</li>
+							<li>
+								Needed to extract low latency but also to exploit full bandwidth of Optane SSD
+							</li>
+							<li>
+								Variables of analysis are (i) request size and (ii) queue depth. Analysis of read and writes are performed.
+							</li>
+							<li>
+								For read operation, large request size and large queue depth  does not work better with optane SSD.
+							</li>
+							<li>
+								For write operations, they are almost comparable in all the cases while optane still being poor for large request size and large queue depth.
+							</li>
+							<li>
+								Optane internally uses RAID like organization of memory dies.
+							</li>
+							<li>
+								The interleaving degree (number of channels) of the Optane and SSD are examined through experiments (ref 18 and 19) and found out to be 7 and 128 respectively. The info of 7 channels is also found in hardware description ( ref 3).
+							</li>
+							<li>
+								This shows Optane has limited internal parallelism.
+							</li>
+							<li>
+								The limited parallelism is one reason that Optane performs better with small number of queue depth.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Random Access is OK
+						<ul>
+							<li>
+								In SSD and HDD, better performance is seen with sequential access than random access. But, Optane is random access block device.
+							</li>
+							<li>
+								Experiments were performed for this for both SSD and Optane based system to prove.
+							</li>
+							<li>
+								Flash SSD performs better on sequential while Optane has comparable performance for read operations.
+							</li>
+							<li>
+								For smaller sized requests, Optane actually favors random writes over sequential writes. Similarly, flash SSD favors sequential writes only for small request size while in other cases, they are comparable.
+							</li>
+							<li>
+								Optane prefers random access because of the ability to perform in-place updates in 3D X Point memory. In Optane, there is no difference in address translation cost for random versus sequential workloads.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Avoided Crowded Accesses
+						<ul>
+							<li>
+								The client should not issue parallel access to a single chunk in Optane based system because Optane SSD contains shared resources.
+							</li>
+							<li>
+								Experiments performed to study the performance by issuing parallel requests for different sector within same chunk.
+							</li>
+							<li>
+								Latency increases with increase in queue depth.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Control Overall Load
+						<ul>
+							<li>
+								For optimal latency in Optane SSD, client must control overall load of both reads and writes
+							</li>
+							<li>
+								Observation derived from performance of Optane serving mixed reads and writes. In the experiment, we issue random 4KB requests, varying the percentageof writes from 0% to 100%, with QD= 64 (large enough toachieve full throughput for both Optane SSD and Flash SSD).
+							</li>
+							<li>
+								In Optane, reads and writes are treated equally. Latency plot overlaps for the plots with different ratio of writes/total access.
+							</li>
+							<li>
+								Latency was not a function of writes vs reads, but is dependent upon other factors of overall load.
+							</li>
+							<li>
+								For flash SSD, write operation increases the latency.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Avoid Tiny Accesses
+						<ul>
+							<li>
+								Client must not issue less than 4KB request.
+							</li>
+							<li>
+								Latency might be same for small requests but for maximizing throughput it is better to issue 4KB request.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Issue 4KB Aligned Requests
+						<ul>
+							<li>
+								For best latency, request should be aligned to 8 sectors that is 4KB.
+							</li>
+							<li>
+								In the experiment,we measure the latency of individual read requests (QD= 1);each read is issued to a position A+offset, where A is a random position aligned to 32KB and offset is a 512-byte sector within that 32KB.
+							</li>
+							<li>
+								A periodic latency observation is made which shows Optane favor aligned requests.
+							</li>
+							<li>
+								Best is when request are aligned to 8 sectors
+							</li>
+						</ul>
+					</li>
+					<li>
+						Forget Garbage Collection
+						<ul>
+							<li>
+								No need to worry about garbage collection of Optane
+							</li>
+							<li>
+								In Flash SSDs, after the device is full, any further writes is slow because it triggers garbage collection. But the write latency foe Optane is sustained which shows garbage collection has no cost.
+							</li>
+							<li>
+								Optane SSD has LBA_based mapping. I have to study this myself later on.
+							</li>
+							<li>
+								Flash performs log-structured based file system thus the throughput pattern occurs when we read according to written order.
+							</li>
+						</ul>
+					</li>
+				</ol>
 			</p>
 		</div>
 		<hr>
