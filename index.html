@@ -305,6 +305,54 @@
 							</li>
 						</ul>
 					</li>
+					<li>
+						P-BiCS
+						<ul>
+							<li>
+								BiCS evidenced some critical issues such as poor reliability characteristics of the memory cells interms of endurance and data retention, poor SLS performances (i.e., cut-off) and a high resistance of the SL, which limits the sensing performance
+							</li>
+							<li>
+								To solve these issues, a pipe-shaped BiCS architecture has been developed, namely the P-BiCS. This integration approach adopts a U-shaped vertical AND string
+							</li>
+							<li>
+								<img src="images/flash_5.PNG" align="center">
+							</li>
+							<li>
+								
+							</li>
+						</ul>
+					</li>
+					<li>
+						VRAT Architecture
+						<ul>
+							<li>
+								Vertical Recess Array Transistor by Samsung
+							</li>
+							<li>
+								Still a charge trap layer is used
+							</li>
+							<li>
+								no staircase structure
+							</li>
+							<li>
+								<img src="images/flash_6.PNG" align="center">
+							</li>
+							<li>
+								
+							</li>
+						</ul>
+					</li>
+					<li>
+						VSAT Architecture
+						<ul>
+							<li>
+								Vertical Stacked Array Transistor
+							</li>
+							<li>
+								<img src="images/flash_7.PNG" align="center">
+							</li>
+						</ul>
+					</li>
 				</ol>
 			</p>
 		</div>
@@ -421,7 +469,55 @@
 
 <div class="content">
 <p>
-	
+	<button type="button" class="collapsible"><i>Introduction </i></button>
+		<div>
+			<p>
+				MRAM stands for Magnetoresistive Random Access Memory. Unlike other conventional memory technology where information is stored in the form of presence or absence of charge particles or current flows, information in MRAM is stored by magnetic storage elements.
+			</p>
+			<p>
+				Structurally, MRAM consists of MRAM cells just like any other memory. Each MRAM cell contains two magnetic plates that are separated by an insulating layer. These plates are ferromagnetic in nature where one of the plates in permanent while the magnetization on other can be changed by influence of external applied field.
+			</p>
+			<p>
+				Based on the magnetization of the two plates being in parallel or antiparallel direction, the resistance of the MRAM cell is different. Measure of this electric resistance is the reading process. If the two plates have the same magnetic alignment, the logic state is said to be '1' while if the two plates have different magnetic alignment, the logic state is said to be '0'. (In parallel orientation, the likelihood of electron tunneling through the insulating layer is more than if they are in antiparallel orientation. Thus in parallel orientation, resistance offered is low and is read as 1 and vice versa.)
+			</p>
+			<p>
+				The two layers or plates can be referred to as (i) free layer, and (ii) fixed layer.
+			</p>
+		</div>
+		<hr>
+		<h3>Magnetic Tunnel Junction</h3>
+		<p>
+			A structure that consists of two layers of magnetic metals that is separated by an insulating layer in between them is the Magnetic Tunnel Junction. Here, the insulating layer between the magnetic layers is very thin that allows electrons to tunnel through one of the magnetic layers to another if a bias voltage is applied between the electrods.
+		</p>
+		<hr>
+		<h3>Tunnel Magnetoresistance</h3>
+		<p>
+			The current in the tunnel, tunneling current, can be changed based on the orientation of the magnetic plates relative to each other. This change in the current based on the magnetic alignment of the plates is called Tunnel Magnetoresistance.
+		</p>
+		<hr>
+		<h3>Toggle MRAM</h3>
+		<p>
+			The structure consists of two magnetic layers and an insulating layer in between. When a bias is applied, the electrons that are spin polarized by the magnetic layers tunnel across the dielectric. 
+		</p>
+		<hr>
+		<h3>STT MRAM</h3>
+		<p>
+			A newer technique called Spin Torque Transfer MRAM that uses Spin Torque Transfer technology. Under the Spin Torque Transfer technology, an electric current that is unpolarized (unpolarized current contains 50% electrons in each orientation) is passed through the fixed layer. This causes the electric current to be spin polarized and thus creates spin-polarized current.
+		</p>
+		<p>
+			When this spin-polarized current is directed into the free layer, the angular momentum can be transferred to this layer. This changes the orientation of the free layer. Here the torque developed while changing the orientation of the current is transferred to the free layer. This creates parallel orientation between the fixed and free layer. If it is required to change the orientation from parallel to antiparallel, the current direction is reversed. Here, the electrons are sent from the free layer to the fixed layer; majority electrons pass to the fixed layer while a minority electrons are reflected; the reflected electrons transfers the angular momentum to the free layer thus changing the orientation to antiparallel. 
+		</p>
+		<hr>
+		<h3>Spin Orbit MRAM</h3>
+		<p>
+			SOT MRAM is a more recent kind of MRAM technology where an additional layer of heavy metal is attached to the free layer. When a current is passed through the heavy metal layer, a spin polarized current is created in direction perpendicular to the unpolarized current. This transfers its angular momentum to the free layer thus performing switching operation on free layer <a href="https://doi.org/10.1016/j.sysarc.2018.11.005">(ref)</a>. The basic principal is based on the idea that a charge current in a heavy metal creates a spin current in a transverse direction or Hall Effect <a href="10.1109/JXCDC.2017.2762699">(ref)</a>. While this is still a under-development technology, researcher at ETH Zurich have reported writing operations in the range of 100 picoseconds <a href="https://scitechdaily.com/next-generation-magnetic-memory-breakthrough-writing-data-in-under-a-nanosecond/">(ref)</a> and <a href="https://www.nature.com/articles/s41565-019-0607-7">(ref)</a>.
+		</p>
+		<hr>
+		<h3>Write Disturb in MRAM</h3>
+		<p>
+			Writing to the memory is performed by changing the magnetic orientation of the plate whose magnetization can be changed. Conventional method of writing requires substantial amount of current on the word and bit lines (the fields being perpendicular to each other). Another negative point of MRAM is the induced field might effect multiple cells, thus limiting the scaling below 100nm <a href="https://doi.org/10.1016/j.mattod.2017.07.007">(ref)</a>. This problem where the field overlaps multiple cells causes <b>write disturb</b> in MRAM.
+		</p>
+		<hr>
 </p>
 </div>
 
