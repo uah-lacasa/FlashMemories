@@ -161,7 +161,21 @@
 
 <div class="content">
 <p>
-	
+	<p>
+		FRAM or FeRAM is a class of memory that achieves non-volatility with a structure similar to DRAM. The capacitor in the DRAM memory has a dielectric layer that needs to periodic recharge to hold the charge, thus making DRAM a volatile memory while it is replaced by Ferroelectric material in FRAM. Presence of this Ferroelectric material (typically Lead Zirconate Titanate, PZT) makes FRAM non-volatile <a href="https://en.wikipedia.org/wiki/Ferroelectric_RAM">(ref)</a>.
+	</p>
+	<hr>
+	<p>
+		Writing to the FRAM is peformed in a process similar to storing charge in capacitors. A field is applied across the dielectric by charging the plates on either sides of it. This causes the atoms inside the dielectric to orient in "up" or "down" orientation, thus storing '1' or '0'. This change in polarity because of application of electric field produces a power-efficient binary switch <a href="https://www.cypress.com/products/f-ram-nonvolatile-ferroelectric-ram">(ref)</a>. The ferroelectric crystal and its orientation is not affected by magnetic field.
+	</p>
+	<hr>
+	<p>
+		<b>Destructive Read</b>: Reading in FRAM is done through the transistor in 1T-1C structure. The transistor forces the cell into a particular state. For example let us assume the transistor forces the cell into a '0' state. If the cell was already in '0' state, there is no change in the output lines. However, if the cells was in a '1' state, this reorientation of atoms in the dielectric causes a brief pulse of current in the output lines are the electrons are pushed out. Detection of this pulse indicates there was a '1' in FRAM cell. This process causes the original value to be overwritten, thus the reading process is desctructive and needs to be re-written.
+	</p>
+	<hr>
+	<p>
+		<b>Ferroelectric Property</b>: The dielectric or the ferroelectric material has a crystal structure. The PbZT crystal is organized in a <i>perovskite</i> structure where the Lead atoms are at the outermost layer and O atom inside them. The Z/Ti atom in the center form the cat-ion and has two equal and low-energy states. By the application of the electric field, the cat-ion will move in the direction of the field applied. This causes the low-energy state to be aligned in the direction of applied field while and conversely high-energy state will be aligned in the opposite direction. THe mnovement of cation causes either "up-polarization" or "down polarization" thus creating the two states <a href="https://www.cypress.com/file/46186/download">(ref)</a>.
+	</p>
 </p>
 </div>
 
@@ -175,7 +189,13 @@
 
 <div class="content">
 <p>
-	
+	<p>
+			Resistive RAM or ReRAM works in the fashion similar to PCM <a href="https://en.wikipedia.org/wiki/Resistive_random-access_memory">(ref)</a>, i.e. by changing the resistance of the dielectric solid-state meterial. Here a metal oxide is sandwiched between two metal electrodes <a href="https://dl.acm.org/doi/pdf/10.1145/2463209.2488867">(ref)</a>. RRAM works by creating defects in the oxide layer to create a filmaent or a condictive path by the application of high voltage.
+		</p>
+		<hr>
+		<p>
+			The filament can be broken resulting in a high resistance state and can be formed to result in a low resistance state.
+		</p>
 </p>
 </div>
 
@@ -531,7 +551,25 @@
 
 <div class="content">
 <p>
-	
+	<p>
+			Phase Change Memories(PCM) utilize the unique propoerty of some material to remain in multiple states as the basics of information storage. Since the change induced in the state remain until the state is again changed to some other state, or reverted back, the storage is non-volatile.
+		</p>
+		<hr>
+		<p>
+			The material that is commonly used is <i>Chalcogenide glass</i>, which can stay in amorphous as well as crystalline solid state. In older generation of PRAM, the state of the Chalcogenide glass was changed by production of heat by passing current through a heating element. This heating element is made of TiN, and was used to change the state of the glass to amorphous solid state by quick application (heated over 600 celcuis). Holding the heat for some time in the crystallization temperature range (cooled) would switch the state back to the crystalline state. Alternative technologies for changing states using laser have been proposed in research <a href="https://doi.org/10.1038/nnano.2011.96">(ref)</a>.
+		</p>
+		<hr>
+		<p>
+			Amorphous state offers more resistance and thus represents a binary 0 state while crystalline state represents a binary 1 state.
+		</p>
+		<hr>
+		<p>
+			The material used in the PCM can exhibit multiple intermediate states between the amorphous and crystalline solid state. This allows for multiple bits storage in a single cell of the PCM. Intel and ST Microelectronis are currently working on a design with four states, two of which are partially crystalline state in addition to the previous two states. <a href="https://en.wikipedia.org/wiki/Phase-change_memory">(ref)</a>.
+		</p>
+		<hr>
+		<p>
+			PRAMs are highly temperature sensitive as data can be lost with application of high temperature. However, they offer fast write times and have an endurance of about 100 million write cycles.
+		</p>
 </p>
 </div>
 

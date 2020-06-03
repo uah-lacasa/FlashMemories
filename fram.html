@@ -1,3 +1,17 @@
 <p>
-	
+	<p>
+		FRAM or FeRAM is a class of memory that achieves non-volatility with a structure similar to DRAM. The capacitor in the DRAM memory has a dielectric layer that needs to periodic recharge to hold the charge, thus making DRAM a volatile memory while it is replaced by Ferroelectric material in FRAM. Presence of this Ferroelectric material (typically Lead Zirconate Titanate, PZT) makes FRAM non-volatile <a href="https://en.wikipedia.org/wiki/Ferroelectric_RAM">(ref)</a>.
+	</p>
+	<hr>
+	<p>
+		Writing to the FRAM is peformed in a process similar to storing charge in capacitors. A field is applied across the dielectric by charging the plates on either sides of it. This causes the atoms inside the dielectric to orient in "up" or "down" orientation, thus storing '1' or '0'. This change in polarity because of application of electric field produces a power-efficient binary switch <a href="https://www.cypress.com/products/f-ram-nonvolatile-ferroelectric-ram">(ref)</a>. The ferroelectric crystal and its orientation is not affected by magnetic field.
+	</p>
+	<hr>
+	<p>
+		<b>Destructive Read</b>: Reading in FRAM is done through the transistor in 1T-1C structure. The transistor forces the cell into a particular state. For example let us assume the transistor forces the cell into a '0' state. If the cell was already in '0' state, there is no change in the output lines. However, if the cells was in a '1' state, this reorientation of atoms in the dielectric causes a brief pulse of current in the output lines are the electrons are pushed out. Detection of this pulse indicates there was a '1' in FRAM cell. This process causes the original value to be overwritten, thus the reading process is desctructive and needs to be re-written.
+	</p>
+	<hr>
+	<p>
+		<b>Ferroelectric Property</b>: The dielectric or the ferroelectric material has a crystal structure. The PbZT crystal is organized in a <i>perovskite</i> structure where the Lead atoms are at the outermost layer and O atom inside them. The Z/Ti atom in the center form the cat-ion and has two equal and low-energy states. By the application of the electric field, the cat-ion will move in the direction of the field applied. This causes the low-energy state to be aligned in the direction of applied field while and conversely high-energy state will be aligned in the opposite direction. THe mnovement of cation causes either "up-polarization" or "down polarization" thus creating the two states <a href="https://www.cypress.com/file/46186/download">(ref)</a>.
+	</p>
 </p>
