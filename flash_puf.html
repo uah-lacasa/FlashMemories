@@ -1,4 +1,54 @@
 <p>
+	<p>
+		The concept presented here in bullets are presented from the paper <a href="https://spqrlab1.github.io/papers/holcomb_PUFs_date14.pdf">PUFs at a Glance</a>
+		<ul>
+			<li>
+				It is difficult to hold the secret key a secret in practice and have it permanently store as a secret. Some systems may not even have NVMs.
+			</li>
+			<li>
+				Thus derive keys using random physical disorder or manufacturing variations in the devices such that even the manufacturers cannot recreate them.
+			</li>
+			<li>
+				A PUF is deliberately designed making use of such variation that is an disordered physical system. It responds by providing a response to an external stimuli or challenge.
+			</li>
+			<li>
+				PUFs differ from the normal digital circuits or systems in the sense that they work at the stability limits ie they are prone to errors. For the correction of such errors to produce stable output, two approaches are used:
+				<ul>
+					<li>
+						First: Use of helper data. Helper data is derived in earlier generation of response and are stored somewhere in NVM. They can be constructed such that it can be known to the adversary without compromising the secrecy of PUF, ie it need not be secret.
+					</li>
+					<li>
+						Second: Technique is to design the PUF system or protocol with inbuilt error tolerances.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Weak PUFs:
+				<ul>
+					<li>
+						Characterized by a few challenges, commonly one challenge per instance of PUF
+					</li>
+					<li>
+						The challenge-response mechanism of the PUF should be access restricted.
+					</li>
+					<li>
+						The response of the limited challenges is known to manufacturer and other limited number of parties outside the hardware.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Strong PUFs:
+				<ul>
+					<li>
+						More complex challenge response behavior. Large number of possible challenges can be applied. And even if the adversary knows a subset of CR pairs, s.he cannot extrapolate the behavior.
+					</li>
+					<li>
+						they can remain unprotected because of availablity of large number of CR pairs.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</p>
 	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
 		<p>
 			Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
@@ -29,6 +79,9 @@
 				</li>
 				<li>
 					<a href="#erasesuspend1">Paper: <i>Extraction of Device Fingerprints using Built-In Erase-Suspend Operation of Flash Memory Devices</i></a>
+				</li>
+				<li>
+					<a href="#eFlash">Paper: <i>Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS</i></a>
 				</li>
 			</ul>
 		</p>
@@ -420,4 +473,27 @@
 				</ul>
 			</p>
 		</div>
+		<hr>
+		<button type="button" class="collapsible"> <a name="eFlash">Paper: <i>Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Derived from paper at <a href="Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS">this link.</a>
+						</li>
+						<li>
+							Based on embedded flash memory in 55-nm CMOS
+						</li>
+						<li>
+							Randomness in nonliner IV characteristics and temporal current fluctuations are exploited
+						</li>
+						<li>
+							Elaborate description of protocol from refs 1 and 2. Protocol will be studied later.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
 </p>

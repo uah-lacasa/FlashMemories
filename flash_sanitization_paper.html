@@ -16,6 +16,9 @@
 					<li>
 						<a href="#evanescoP">Evanesco: Proposal</a>
 					</li>
+					<li>
+						<a href="#forensicNAND">Improving the Reliability of Chip-Off Forensic Analysis of NAND Flash Memory Devices</a>
+					</li>
 				</ul>
 			</p>
 		</div>
@@ -112,6 +115,46 @@
 					<p>
 						<b>Block Level Sanitization:</b> If a large number of pages are to be sanitized, PLock becomes non-trivial and incurs overhead. A single block sanitization can sanitize a large number of pages at once. This only works in 3D as the bAP flag is implemented in SSL (Source Select Line) of 3D NAND as 3D NAND use normal flash cell (that allows for SSL to act as WL) for SSL rather than transistor. 
 					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="forensicNAND"></a><i>Improving the Reliability of Chip-Off Forensic Analysis of NAND Flash Memory Devices</i></button>
+				<div class="content">
+					<p>
+						The original paper can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/flash-memory-chip-off-forensics-reliability_dfrws17.pdf">this link</a>
+					</p>
+					<p>
+						This paper deals in opposite to what sanitization is about, as it discusses the techniques to extract data from a NAND flash memory that is acquired as part of some investigation.
+					</p>
+					<p>
+						When the chips are obtained intact in the circuit, a method called chip-off is used to remove the chip from the cicruit using some heating technique.
+					</p>
+					<p>
+						Two major observations made in the experiments are:
+						<ul>
+							<li>From the time device is seized and time digital forensic investigators perform data extraction, a large number of errors are introduced (through charge leakage: data retention errors)</li>
+							<li>Using thermal based methods, the errors in the flash memory increases by two or more orders since the application of temprature increases the leakage.</li>
+						</ul>
+					</p>
+					<p>
+						This experiment explores a hardware based approach: fine grained read reference voltage control mechanism implemnted in modern NAND, called read retry. 
+					</p>
+					<p>
+						Read retry can compensate change leakage that occurs due to retention loss and thermal based chip removal.
+					</p>
+					<p>
+						Citation number [7], paper found at <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.444.4809&rep=rep1&type=pdf">this link</a> discusses reverse engineering the content of NAND memory. Thesis at <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/a509258.pdf">this link</a> also discusses along the same lines.
+					</p>
+					<p>
+						Modern NAND flash have some form of read-retry methods ie by dynamically adjusting read reference voltages, in a fine grained manner.
+					</p>
+					<p>
+						The papers mentions that the flash controllers tries read operation with a number of reference voltages. However, the exact detail of read retry operation is not made public by the manufacturers as in the paper.
+					</p>
+					<p>
+						RBER increases with retention, but with read-retry method of reading the error decreases. But read retry modeA only reduces the error at high PE cycle counts. And most of the times it is not beneficial as it is not controllable and visible.
+					</p>
+
 				</div>
 				<hr>
 </p>

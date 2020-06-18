@@ -899,6 +899,56 @@
 
 <div class="content">
 <p>
+	<p>
+		The concept presented here in bullets are presented from the paper <a href="https://spqrlab1.github.io/papers/holcomb_PUFs_date14.pdf">PUFs at a Glance</a>
+		<ul>
+			<li>
+				It is difficult to hold the secret key a secret in practice and have it permanently store as a secret. Some systems may not even have NVMs.
+			</li>
+			<li>
+				Thus derive keys using random physical disorder or manufacturing variations in the devices such that even the manufacturers cannot recreate them.
+			</li>
+			<li>
+				A PUF is deliberately designed making use of such variation that is an disordered physical system. It responds by providing a response to an external stimuli or challenge.
+			</li>
+			<li>
+				PUFs differ from the normal digital circuits or systems in the sense that they work at the stability limits ie they are prone to errors. For the correction of such errors to produce stable output, two approaches are used:
+				<ul>
+					<li>
+						First: Use of helper data. Helper data is derived in earlier generation of response and are stored somewhere in NVM. They can be constructed such that it can be known to the adversary without compromising the secrecy of PUF, ie it need not be secret.
+					</li>
+					<li>
+						Second: Technique is to design the PUF system or protocol with inbuilt error tolerances.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Weak PUFs:
+				<ul>
+					<li>
+						Characterized by a few challenges, commonly one challenge per instance of PUF
+					</li>
+					<li>
+						The challenge-response mechanism of the PUF should be access restricted.
+					</li>
+					<li>
+						The response of the limited challenges is known to manufacturer and other limited number of parties outside the hardware.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Strong PUFs:
+				<ul>
+					<li>
+						More complex challenge response behavior. Large number of possible challenges can be applied. And even if the adversary knows a subset of CR pairs, s.he cannot extrapolate the behavior.
+					</li>
+					<li>
+						they can remain unprotected because of availablity of large number of CR pairs.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</p>
 	<button type="button" class="collapsible"> <i>List of Papers Studied</i></button>
 		<p>
 			Following is the list of papers studied while creating this document. The description of each papers are maintained and linked here so it would be easy for anyone doing a survey to fetch the appropriate description in timely fashion.
@@ -929,6 +979,9 @@
 				</li>
 				<li>
 					<a href="#erasesuspend1">Paper: <i>Extraction of Device Fingerprints using Built-In Erase-Suspend Operation of Flash Memory Devices</i></a>
+				</li>
+				<li>
+					<a href="#eFlash">Paper: <i>Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS</i></a>
 				</li>
 			</ul>
 		</p>
@@ -1320,6 +1373,29 @@
 				</ul>
 			</p>
 		</div>
+		<hr>
+		<button type="button" class="collapsible"> <a name="eFlash">Paper: <i>Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS</i></a></button>
+			<div class="content">
+				<p>
+					<ul>
+						<li>
+							Derived from paper at <a href="Lightweight Integrated Design of PUF andTRNG Security Primitives Based on eFlashMemory in 55-nm CMOS">this link.</a>
+						</li>
+						<li>
+							Based on embedded flash memory in 55-nm CMOS
+						</li>
+						<li>
+							Randomness in nonliner IV characteristics and temporal current fluctuations are exploited
+						</li>
+						<li>
+							Elaborate description of protocol from refs 1 and 2. Protocol will be studied later.
+						</li>
+						<li>
+							
+						</li>
+					</ul>
+				</p>
+			</div>
 </p>
 </div>
 
@@ -1349,6 +1425,9 @@
 					</li>
 					<li>
 						<a href="#evanescoP">Evanesco: Proposal</a>
+					</li>
+					<li>
+						<a href="#forensicNAND">Improving the Reliability of Chip-Off Forensic Analysis of NAND Flash Memory Devices</a>
 					</li>
 				</ul>
 			</p>
@@ -1446,6 +1525,46 @@
 					<p>
 						<b>Block Level Sanitization:</b> If a large number of pages are to be sanitized, PLock becomes non-trivial and incurs overhead. A single block sanitization can sanitize a large number of pages at once. This only works in 3D as the bAP flag is implemented in SSL (Source Select Line) of 3D NAND as 3D NAND use normal flash cell (that allows for SSL to act as WL) for SSL rather than transistor. 
 					</p>
+				</div>
+				<hr>
+
+			<button type="button" class="collapsible"> <a name="forensicNAND"></a><i>Improving the Reliability of Chip-Off Forensic Analysis of NAND Flash Memory Devices</i></button>
+				<div class="content">
+					<p>
+						The original paper can be found at <a href="https://people.inf.ethz.ch/omutlu/pub/flash-memory-chip-off-forensics-reliability_dfrws17.pdf">this link</a>
+					</p>
+					<p>
+						This paper deals in opposite to what sanitization is about, as it discusses the techniques to extract data from a NAND flash memory that is acquired as part of some investigation.
+					</p>
+					<p>
+						When the chips are obtained intact in the circuit, a method called chip-off is used to remove the chip from the cicruit using some heating technique.
+					</p>
+					<p>
+						Two major observations made in the experiments are:
+						<ul>
+							<li>From the time device is seized and time digital forensic investigators perform data extraction, a large number of errors are introduced (through charge leakage: data retention errors)</li>
+							<li>Using thermal based methods, the errors in the flash memory increases by two or more orders since the application of temprature increases the leakage.</li>
+						</ul>
+					</p>
+					<p>
+						This experiment explores a hardware based approach: fine grained read reference voltage control mechanism implemnted in modern NAND, called read retry. 
+					</p>
+					<p>
+						Read retry can compensate change leakage that occurs due to retention loss and thermal based chip removal.
+					</p>
+					<p>
+						Citation number [7], paper found at <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.444.4809&rep=rep1&type=pdf">this link</a> discusses reverse engineering the content of NAND memory. Thesis at <a href="https://apps.dtic.mil/dtic/tr/fulltext/u2/a509258.pdf">this link</a> also discusses along the same lines.
+					</p>
+					<p>
+						Modern NAND flash have some form of read-retry methods ie by dynamically adjusting read reference voltages, in a fine grained manner.
+					</p>
+					<p>
+						The papers mentions that the flash controllers tries read operation with a number of reference voltages. However, the exact detail of read retry operation is not made public by the manufacturers as in the paper.
+					</p>
+					<p>
+						RBER increases with retention, but with read-retry method of reading the error decreases. But read retry modeA only reduces the error at high PE cycle counts. And most of the times it is not beneficial as it is not controllable and visible.
+					</p>
+
 				</div>
 				<hr>
 </p>
